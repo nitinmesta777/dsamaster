@@ -1,0 +1,3921 @@
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#08111f;
+  color:#f4f7fb;
+  min-height:100vh;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+  font-family:inherit;
+}
+
+#app{
+  min-height:100vh;
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:#0d1a2d;
+  border-bottom:1px solid #20324d;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.brand{
+  font-size:21px;
+  font-weight:800;
+}
+
+.brand span{
+  color:#42d392;
+}
+
+.topstats{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.stat{
+  background:#15253d;
+  border:1px solid #29415f;
+  border-radius:12px;
+  padding:7px 10px;
+  font-size:12px;
+}
+
+.page{
+  max-width:1050px;
+  margin:auto;
+  padding:20px 15px 90px;
+}
+
+.hero{
+  background:linear-gradient(135deg,#122a48,#102039);
+  border:1px solid #29496d;
+  border-radius:22px;
+  padding:24px;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:30px;
+  margin-bottom:9px;
+}
+
+.hero p{
+  color:#b8c8da;
+  line-height:1.6;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+}
+
+.card{
+  background:#0e1c30;
+  border:1px solid #243b58;
+  border-radius:18px;
+  padding:17px;
+  margin-bottom:14px;
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.card p{
+  color:#aebed0;
+  line-height:1.5;
+  font-size:14px;
+}
+
+.btn{
+  padding:11px 14px;
+  border-radius:12px;
+  background:#1c3555;
+  color:white;
+  font-weight:700;
+  margin-top:10px;
+}
+
+.btn:hover{
+  filter:brightness(1.15);
+}
+
+.btn.primary{
+  background:#267c61;
+}
+
+.btn.gold{
+  background:#80621a;
+}
+
+.btn.red{
+  background:#803b3b;
+}
+
+.btn.blue{
+  background:#285a91;
+}
+
+.btn.full{
+  width:100%;
+}
+
+.section-title{
+  margin:22px 0 12px;
+  font-size:22px;
+}
+
+.muted{
+  color:#91a5bb;
+}
+
+.progress{
+  width:100%;
+  height:9px;
+  background:#17283e;
+  border-radius:20px;
+  overflow:hidden;
+  margin:10px 0;
+}
+
+.progress div{
+  height:100%;
+  background:#42d392;
+  width:0%;
+}
+
+.topic-card{
+  position:relative;
+}
+
+.lock{
+  opacity:.72;
+}
+
+.price{
+  display:inline-block;
+  margin-top:8px;
+  padding:5px 8px;
+  border-radius:8px;
+  background:#172d48;
+  color:#ffd866;
+  font-weight:700;
+  font-size:12px;
+}
+
+.badge{
+  display:inline-block;
+  padding:5px 8px;
+  border-radius:8px;
+  background:#183c32;
+  color:#6ce6b0;
+  font-size:12px;
+  font-weight:700;
+}
+
+.nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:100;
+  background:#0b1728;
+  border-top:1px solid #223852;
+  display:flex;
+  justify-content:center;
+  gap:4px;
+  padding:8px 5px;
+}
+
+.nav button{
+  flex:1;
+  max-width:120px;
+  background:transparent;
+  color:#9db0c5;
+  padding:9px 4px;
+  border-radius:10px;
+  font-size:11px;
+}
+
+.nav button.active{
+  background:#19324e;
+  color:#fff;
+}
+
+.lesson{
+  background:#0e1c30;
+  border:1px solid #263e5c;
+  border-radius:20px;
+  padding:20px;
+}
+
+.lesson h1{
+  font-size:27px;
+  margin-bottom:10px;
+}
+
+.lesson h2{
+  margin:25px 0 9px;
+  color:#69dca8;
+  font-size:20px;
+}
+
+.lesson h3{
+  margin:18px 0 7px;
+}
+
+.lesson p{
+  color:#c1cedb;
+  line-height:1.75;
+  margin-bottom:10px;
+}
+
+.lesson ul{
+  padding-left:22px;
+  color:#c1cedb;
+  line-height:1.7;
+}
+
+.codebox{
+  background:#050b13;
+  border:1px solid #263a50;
+  border-radius:14px;
+  padding:15px;
+  overflow:auto;
+  margin:12px 0;
+}
+
+.codebox pre{
+  white-space:pre-wrap;
+  font-family:monospace;
+  color:#d8e6f4;
+  font-size:13px;
+  line-height:1.55;
+}
+
+.langbar{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin:12px 0;
+}
+
+.langbar button{
+  background:#172a43;
+  color:#b9c9db;
+  padding:9px 12px;
+  border-radius:9px;
+}
+
+.langbar button.selected{
+  background:#267c61;
+  color:white;
+}
+
+.lesson-list{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.lesson-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  background:#13243a;
+  padding:13px;
+  border-radius:12px;
+  border:1px solid #233b57;
+}
+
+.lesson-row small{
+  color:#8fa4b9;
+}
+
+.question{
+  background:#0e1c30;
+  border:1px solid #263e5c;
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:13px;
+}
+
+.option{
+  width:100%;
+  text-align:left;
+  background:#14263e;
+  color:#eaf1f7;
+  border:1px solid #2a425f;
+  padding:12px;
+  border-radius:11px;
+  margin-top:8px;
+}
+
+.option:hover{
+  background:#1b3554;
+}
+
+.option.correct{
+  background:#174b39;
+  border-color:#42d392;
+}
+
+.option.wrong{
+  background:#4b2222;
+  border-color:#d96d6d;
+}
+
+.reward{
+  background:#182f29;
+  border:1px solid #2d624f;
+  color:#79e5b4;
+  border-radius:15px;
+  padding:15px;
+  margin:12px 0;
+}
+
+.warning{
+  background:#332b17;
+  border:1px solid #685827;
+  color:#eadb9c;
+  border-radius:15px;
+  padding:15px;
+  margin:12px 0;
+}
+
+.info{
+  background:#172b43;
+  border:1px solid #2b496c;
+  color:#bcd0e5;
+  border-radius:15px;
+  padding:15px;
+  margin:12px 0;
+}
+
+.back{
+  margin-bottom:14px;
+}
+
+.center{
+  text-align:center;
+}
+
+.big-number{
+  font-size:32px;
+  font-weight:800;
+  color:#ffd866;
+}
+
+.input{
+  width:100%;
+  padding:13px;
+  border-radius:11px;
+  border:1px solid #304a67;
+  background:#0a1524;
+  color:white;
+  outline:none;
+  margin-top:8px;
+}
+
+.footer{
+  text-align:center;
+  color:#6f8499;
+  font-size:12px;
+  margin-top:30px;
+  line-height:1.6;
+}
+
+.toast{
+  position:fixed;
+  top:75px;
+  right:15px;
+  z-index:200;
+  background:#152b43;
+  border:1px solid #365777;
+  color:#fff;
+  padding:12px 15px;
+  border-radius:12px;
+  opacity:0;
+  transform:translateY(-10px);
+  pointer-events:none;
+  transition:.25s;
+  max-width:280px;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.splash{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:radial-gradient(circle at center,#173554,#08111f 70%);
+}
+
+.splash h1{
+  font-size:42px;
+  margin-bottom:8px;
+}
+
+.splash p{
+  color:#9fb2c6;
+}
+
+@media(max-width:600px){
+  .hero h1{
+    font-size:25px;
+  }
+
+  .topbar{
+    align-items:flex-start;
+  }
+
+  .brand{
+    font-size:18px;
+  }
+
+  .lesson{
+    padding:15px;
+  }
+
+  .lesson h1{
+    font-size:23px;
+  }
+}
+</style>
+
+<div id="app">
+  <div class="splash">
+    <div>
+      <h1>DSA <span style="color:#42d392">Master</span></h1>
+      <p>Learn. Practice. Prepare. Become Interview Ready.</p>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+(function(){
+
+"use strict";
+
+const STORAGE_KEY = "dsa_master_complete_v4";
+
+const languages = [
+  "Python",
+  "C",
+  "C++",
+  "Java",
+  "JavaScript"
+];
+
+const topics = [
+  {
+    id:"t1",
+    name:"Big-O & Complexity",
+    icon:"O",
+    desc:"Learn how to measure the speed and memory usage of algorithms.",
+    cost:0
+  },
+  {
+    id:"t2",
+    name:"Arrays",
+    icon:"A",
+    desc:"Store and process collections of values efficiently.",
+    cost:50
+  },
+  {
+    id:"t3",
+    name:"Strings",
+    icon:"S",
+    desc:"Work with text, characters, searching and transformations.",
+    cost:50
+  },
+  {
+    id:"t4",
+    name:"Searching",
+    icon:"?",
+    desc:"Find values efficiently using different searching techniques.",
+    cost:75
+  },
+  {
+    id:"t5",
+    name:"Sorting",
+    icon:"S",
+    desc:"Arrange data using popular sorting algorithms.",
+    cost:75
+  },
+  {
+    id:"t6",
+    name:"Linked Lists",
+    icon:"L",
+    desc:"Understand nodes, pointers and dynamic data structures.",
+    cost:100
+  },
+  {
+    id:"t7",
+    name:"Stacks",
+    icon:"T",
+    desc:"Learn the Last-In-First-Out data structure.",
+    cost:100
+  },
+  {
+    id:"t8",
+    name:"Queues",
+    icon:"Q",
+    desc:"Learn the First-In-First-Out data structure.",
+    cost:100
+  },
+  {
+    id:"t9",
+    name:"Hashing",
+    icon:"#",
+    desc:"Store and retrieve information quickly using hash tables.",
+    cost:125
+  },
+  {
+    id:"t10",
+    name:"Recursion",
+    icon:"R",
+    desc:"Solve problems by making a function call itself.",
+    cost:125
+  },
+  {
+    id:"t11",
+    name:"Two Pointers",
+    icon:"2",
+    desc:"Use two indexes to solve array and string problems efficiently.",
+    cost:150
+  },
+  {
+    id:"t12",
+    name:"Sliding Window",
+    icon:"W",
+    desc:"Solve continuous range problems efficiently.",
+    cost:150
+  },
+  {
+    id:"t13",
+    name:"Trees",
+    icon:"T",
+    desc:"Understand hierarchical data and tree traversal.",
+    cost:150
+  },
+  {
+    id:"t14",
+    name:"Binary Search Tree",
+    icon:"B",
+    desc:"Learn ordered tree structures and efficient searching.",
+    cost:175
+  },
+  {
+    id:"t15",
+    name:"Heaps & Priority Queue",
+    icon:"H",
+    desc:"Understand priority-based data processing.",
+    cost:175
+  },
+  {
+    id:"t16",
+    name:"Graphs",
+    icon:"G",
+    desc:"Model relationships between objects and networks.",
+    cost:200
+  },
+  {
+    id:"t17",
+    name:"Greedy Algorithms",
+    icon:"GR",
+    desc:"Make locally best choices to build a solution.",
+    cost:200
+  },
+  {
+    id:"t18",
+    name:"Dynamic Programming",
+    icon:"DP",
+    desc:"Break difficult problems into reusable smaller problems.",
+    cost:200
+  },
+  {
+    id:"t19",
+    name:"Backtracking",
+    icon:"BT",
+    desc:"Explore possibilities and undo choices when necessary.",
+    cost:200
+  },
+  {
+    id:"t20",
+    name:"Advanced DSA",
+    icon:"X",
+    desc:"Combine multiple concepts for interview-level problems.",
+    cost:250
+  }
+];
+
+const companies = [
+  {
+    id:"local",
+    name:"Local Company",
+    cost:1000,
+    desc:"Beginner-friendly interview questions."
+  },
+  {
+    id:"infosys",
+    name:"Infosys",
+    cost:2000,
+    desc:"Common service-company coding interview practice."
+  },
+  {
+    id:"tcs",
+    name:"TCS",
+    cost:3000,
+    desc:"Practice common aptitude and coding patterns."
+  },
+  {
+    id:"deloitte",
+    name:"Deloitte",
+    cost:5000,
+    desc:"Interview-oriented DSA preparation."
+  },
+  {
+    id:"jpmorgan",
+    name:"JPMorgan",
+    cost:7500,
+    desc:"Higher-level coding and problem-solving practice."
+  },
+  {
+    id:"top",
+    name:"Top Companies",
+    cost:10000,
+    desc:"Advanced interview-style question collection."
+  }
+];
+
+const baseLessons = {
+  "Big-O & Complexity":[
+    "What is Big-O?",
+    "Time Complexity",
+    "Space Complexity",
+    "Complexity Practice"
+  ],
+  "Arrays":[
+    "Array Basics",
+    "Array Traversal",
+    "Insert Delete Search",
+    "Array Problems"
+  ],
+  "Strings":[
+    "String Basics",
+    "Characters and Indexing",
+    "String Searching",
+    "String Problems"
+  ],
+  "Searching":[
+    "Linear Search",
+    "Binary Search",
+    "Search Comparison",
+    "Search Problems"
+  ],
+  "Sorting":[
+    "Bubble Sort",
+    "Selection Sort",
+    "Insertion Sort",
+    "Sorting Comparison"
+  ],
+  "Linked Lists":[
+    "Linked List Basics",
+    "Insert Nodes",
+    "Delete Nodes",
+    "Linked List Problems"
+  ],
+  "Stacks":[
+    "Stack Basics",
+    "Push and Pop",
+    "Stack Applications",
+    "Stack Problems"
+  ],
+  "Queues":[
+    "Queue Basics",
+    "Enqueue and Dequeue",
+    "Circular Queue",
+    "Queue Problems"
+  ],
+  "Hashing":[
+    "Hashing Basics",
+    "Hash Tables",
+    "Collision Concepts",
+    "Hashing Problems"
+  ],
+  "Recursion":[
+    "Recursion Basics",
+    "Base Case",
+    "Recursive Thinking",
+    "Recursion Problems"
+  ],
+  "Two Pointers":[
+    "Two Pointer Idea",
+    "Opposite Direction",
+    "Same Direction",
+    "Two Pointer Problems"
+  ],
+  "Sliding Window":[
+    "Sliding Window Idea",
+    "Fixed Window",
+    "Variable Window",
+    "Window Problems"
+  ],
+  "Trees":[
+    "Tree Basics",
+    "Tree Traversal",
+    "DFS and BFS",
+    "Tree Problems"
+  ],
+  "Binary Search Tree":[
+    "BST Basics",
+    "BST Search",
+    "BST Insert",
+    "BST Problems"
+  ],
+  "Heaps & Priority Queue":[
+    "Heap Basics",
+    "Min Heap and Max Heap",
+    "Priority Queue",
+    "Heap Problems"
+  ],
+  "Graphs":[
+    "Graph Basics",
+    "Graph Representation",
+    "BFS and DFS",
+    "Graph Problems"
+  ],
+  "Greedy Algorithms":[
+    "Greedy Thinking",
+    "Choosing Local Optimum",
+    "Greedy vs DP",
+    "Greedy Problems"
+  ],
+  "Dynamic Programming":[
+    "DP Basics",
+    "Memoization",
+    "Tabulation",
+    "DP Problems"
+  ],
+  "Backtracking":[
+    "Backtracking Basics",
+    "Decision Tree",
+    "Undoing Choices",
+    "Backtracking Problems"
+  ],
+  "Advanced DSA":[
+    "Advanced Problem Solving",
+    "Combining Data Structures",
+    "Interview Patterns",
+    "Advanced Practice"
+  ]
+};
+
+function createDefaultState(){
+  return {
+    coins:1000,
+    completed:{},
+    topicUnlocked:{"t1":true},
+    companyUnlocked:{},
+    selectedLanguage:"Python",
+    streak:1,
+    lastDay:new Date().toDateString(),
+    testBest:0,
+    referralCode:"DM"+Math.floor(100000+Math.random()*900000),
+    referrals:0,
+    sound:true,
+    nickname:"NITIN"
+  };
+}
+
+let state = loadState();
+
+let currentPage = "home";
+let currentTopic = null;
+let currentLesson = 0;
+let currentCompany = null;
+let currentPracticeTopic = null;
+let practiceQuestion = 0;
+let practiceScore = 0;
+let testIndex = 0;
+let testScore = 0;
+
+function loadState(){
+  try{
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if(saved){
+      const parsed = JSON.parse(saved);
+      return Object.assign(createDefaultState(),parsed);
+    }
+  }catch(e){}
+  return createDefaultState();
+}
+
+function saveState(){
+  try{
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+  }catch(e){}
+}
+
+function showToast(message){
+  const toast = document.getElementById("toast");
+  if(!toast) return;
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(function(){
+    toast.classList.remove("show");
+  },2200);
+}
+
+function sound(){
+  if(!state.sound) return;
+
+  try{
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if(!AudioContext) return;
+
+    const ctx = new AudioContext();
+    const oscillator = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    oscillator.frequency.value = 650;
+    gain.gain.value = 0.035;
+
+    oscillator.connect(gain);
+    gain.connect(ctx.destination);
+
+    oscillator.start();
+
+    setTimeout(function(){
+      oscillator.stop();
+      ctx.close();
+    },80);
+  }catch(e){}
+}
+
+function earnCoins(amount,reason){
+  state.coins += amount;
+  saveState();
+  sound();
+  showToast("+"+amount+" coins"+(reason ? " - "+reason : ""));
+  render();
+}
+
+function totalLessons(){
+  return topics.length * 4;
+}
+
+function completedLessons(){
+  return Object.keys(state.completed).length;
+}
+
+function totalProgress(){
+  return Math.round((completedLessons()/totalLessons())*100);
+}
+
+function topicCompleted(topicId){
+  for(let i=0;i<4;i++){
+    if(!state.completed[topicId+"_"+i]) return false;
+  }
+  return true;
+}
+
+function unlockTopic(topic){
+  if(state.topicUnlocked[topic.id]){
+    openTopic(topic.id);
+    return;
+  }
+
+  if(state.coins < topic.cost){
+    const shortage = topic.cost-state.coins;
+    showToast("Need "+shortage+" more coins");
+    renderCoinAdMessage(shortage);
+    return;
+  }
+
+  state.coins -= topic.cost;
+  state.topicUnlocked[topic.id] = true;
+  saveState();
+  sound();
+  showToast(topic.name+" unlocked!");
+  openTopic(topic.id);
+}
+
+function unlockCompany(company){
+  if(state.companyUnlocked[company.id]){
+    openCompany(company.id);
+    return;
+  }
+
+  if(state.coins < company.cost){
+    const shortage = company.cost-state.coins;
+    showToast("Need "+shortage+" more coins");
+    renderCoinAdMessage(shortage);
+    return;
+  }
+
+  state.coins -= company.cost;
+  state.companyUnlocked[company.id] = true;
+  saveState();
+  sound();
+  showToast(company.name+" interview unlocked!");
+  openCompany(company.id);
+}
+
+function renderCoinAdMessage(shortage){
+  setTimeout(function(){
+    if(currentPage==="home" || currentPage==="companies"){
+      showToast("Watch a rewarded ad to earn coins");
+    }
+  },600);
+}
+
+function watchAd(amount){
+  showToast("Loading rewarded ad...");
+  setTimeout(function(){
+    state.coins += amount;
+    saveState();
+    sound();
+    showToast("Reward received: +"+amount+" coins");
+    render();
+  },1000);
+}
+
+function completeLesson(){
+  const key = currentTopic+"_"+currentLesson;
+
+  if(state.completed[key]){
+    showToast("Lesson already completed");
+    return;
+  }
+
+  state.completed[key] = true;
+  state.coins += 10;
+
+  if(topicCompleted(currentTopic)){
+    state.coins += 50;
+    showToast("Lesson complete! Topic bonus +50 coins");
+  }else{
+    showToast("Lesson complete! +10 coins");
+  }
+
+  saveState();
+  sound();
+  render();
+}
+
+function updateStreak(){
+  const today = new Date().toDateString();
+
+  if(state.lastDay !== today){
+    state.streak += 1;
+    state.lastDay = today;
+    saveState();
+  }
+}
+
+function lessonContent(topic,lessonIndex){
+  const lessonName = baseLessons[topic.name][lessonIndex];
+
+  const generic = {
+    concept:
+      "The most important goal of this lesson is not memorizing code. " +
+      "You should understand what the data structure or algorithm is doing, " +
+      "why it is useful, and when you should choose it. " +
+      "Imagine that you are solving a problem with pen and paper first. " +
+      "The code is simply a way of expressing the solution to the computer.",
+    why:
+      "DSA is important because a correct program is not always an efficient program. " +
+      "When the input becomes large, a slow approach can become extremely difficult to use. " +
+      "Good data structures help us store information properly, while good algorithms help us process that information efficiently.",
+    analogy:
+      "Think about a library. If every book is placed randomly on the floor, finding one book takes a long time. " +
+      "If books are organized into sections and shelves, searching becomes much easier. " +
+      "Data structures are like the organization system, while algorithms are like the procedure used to find or process something.",
+    working:
+      "First understand the input. Then identify what information must be stored. " +
+      "Next choose the operation that happens most frequently. Finally choose a data structure or algorithm that makes that operation efficient. " +
+      "Always think about edge cases such as empty input, one element, duplicate values and very large input.",
+    mistakes:
+      "Common mistakes include memorizing code without understanding it, ignoring edge cases, using nested loops unnecessarily, " +
+      "and forgetting to analyze time and space complexity. Another common mistake is choosing a data structure simply because it is familiar instead of choosing it because it fits the problem.",
+    interview:
+      "In an interview, explain your thought process before writing code. State the simple approach first, then improve it. " +
+      "Mention the time complexity and space complexity of your final solution. This shows the interviewer that you understand both coding and problem solving.",
+    takeaway:
+      "The key takeaway is simple: understand the problem first, choose the right structure or algorithm second, and write the code third."
+  };
+
+  let specific = "";
+
+  if(topic.name==="Arrays"){
+    specific =
+      "An array stores multiple values in an ordered sequence. " +
+      "Each value is normally accessed using an index. In many languages the first index is 0. " +
+      "This makes direct access extremely fast because the computer can calculate where an element is located.";
+  }
+  else if(topic.name==="Strings"){
+    specific =
+      "A string represents text as a sequence of characters. " +
+      "Many interview questions are actually array-style problems applied to characters. " +
+      "You should become comfortable with indexing, counting, comparison, reversal and searching.";
+  }
+  else if(topic.name==="Searching"){
+    specific =
+      "Searching means finding a required value in a collection. " +
+      "Linear search checks elements one by one. Binary search is much faster but requires the data to be sorted and repeatedly cuts the search range in half.";
+  }
+  else if(topic.name==="Sorting"){
+    specific =
+      "Sorting means arranging values into an order such as ascending or descending. " +
+      "Different algorithms have different performance characteristics. Learning simple algorithms first gives you a strong foundation for understanding more advanced sorting techniques.";
+  }
+  else if(topic.name==="Linked Lists"){
+    specific =
+      "A linked list is made from nodes. A node stores data and a reference to another node. " +
+      "Unlike an array, linked-list nodes do not need to be next to each other in memory. " +
+      "This makes insertion and deletion flexible when the correct node position is already known.";
+  }
+  else if(topic.name==="Stacks"){
+    specific =
+      "A stack follows Last-In-First-Out. The last item inserted is the first item removed. " +
+      "A real-world example is a stack of plates. You normally take the top plate first.";
+  }
+  else if(topic.name==="Queues"){
+    specific =
+      "A queue follows First-In-First-Out. The first item entering the queue is the first item leaving it. " +
+      "People waiting in a line are a simple real-world example.";
+  }
+  else if(topic.name==="Hashing"){
+    specific =
+      "Hashing attempts to convert a key into a location where its associated value can be stored or found. " +
+      "With a good hash table implementation, lookup can be extremely fast on average.";
+  }
+  else if(topic.name==="Recursion"){
+    specific =
+      "Recursion happens when a function solves a problem by calling itself on a smaller version of the same problem. " +
+      "Every recursive solution needs a base case so that the calls eventually stop.";
+  }
+  else if(topic.name==="Two Pointers"){
+    specific =
+      "The two-pointer technique uses two indexes instead of repeatedly scanning the same data. " +
+      "The pointers can move toward each other or in the same direction depending on the problem.";
+  }
+  else if(topic.name==="Sliding Window"){
+    specific =
+      "Sliding window is useful when a problem asks about a continuous part of an array or string. " +
+      "Instead of calculating every range from scratch, we update a running window as it moves.";
+  }
+  else if(topic.name==="Trees"){
+    specific =
+      "A tree is a hierarchical structure made from nodes connected by edges. " +
+      "A tree has a root and can contain child nodes. Traversal means visiting nodes in a particular order.";
+  }
+  else if(topic.name==="Binary Search Tree"){
+    specific =
+      "A binary search tree follows an ordering rule: values smaller than a node are normally placed on one side and larger values on the other. " +
+      "This structure can make searching efficient when the tree remains reasonably balanced.";
+  }
+  else if(topic.name==="Heaps & Priority Queue"){
+    specific =
+      "A heap is a tree-based structure commonly represented using an array. " +
+      "It allows us to quickly access the highest-priority or lowest-priority element depending on the heap type.";
+  }
+  else if(topic.name==="Graphs"){
+    specific =
+      "A graph represents relationships between objects. Objects are vertices and relationships are edges. " +
+      "Graphs are used in maps, social networks, computer networks and many real-world systems.";
+  }
+  else if(topic.name==="Greedy Algorithms"){
+    specific =
+      "A greedy algorithm repeatedly chooses what appears to be the best choice at the current moment. " +
+      "Greedy methods can be very efficient, but they only work when the problem has the right mathematical structure.";
+  }
+  else if(topic.name==="Dynamic Programming"){
+    specific =
+      "Dynamic programming solves problems with overlapping subproblems by remembering results that have already been calculated. " +
+      "This can turn a huge number of repeated calculations into a manageable number of calculations.";
+  }
+  else if(topic.name==="Backtracking"){
+    specific =
+      "Backtracking explores possible choices. When a choice leads to an invalid or unsuccessful path, the algorithm reverses that choice and tries another path.";
+  }
+  else if(topic.name==="Advanced DSA"){
+    specific =
+      "Advanced DSA is about combining the concepts you have already learned. " +
+      "Interview problems often do not tell you which data structure to use. Your job is to recognize the pattern and construct an efficient solution.";
+  }
+  else if(topic.name==="Big-O & Complexity"){
+    specific =
+      "Big-O describes how the resource requirements of an algorithm grow as the input size grows. " +
+      "For example, scanning n values once is usually O(n), while comparing every pair can become O(n²).";
+  }
+
+  return Object.assign({},generic,{
+    lessonName:lessonName,
+    specific:specific
+  });
+}
+
+function codeExample(topic,lang,lessonIndex){
+
+  const examples = {
+
+    "Python":{
+      "Big-O & Complexity":
+`numbers = [10, 20, 30, 40, 50]
+
+for number in numbers:
+    print(number)
+
+# One complete traversal -> O(n)`,
+
+      "Arrays":
+`numbers = [10, 20, 30, 40]
+
+print(numbers[0])
+
+for value in numbers:
+    print(value)`,
+
+      "Strings":
+`text = "DSA"
+
+for ch in text:
+    print(ch)
+
+print(text[0])`,
+
+      "Searching":
+`numbers = [4, 8, 15, 16, 23]
+
+target = 15
+
+for i in range(len(numbers)):
+    if numbers[i] == target:
+        print("Found at index", i)
+        break`,
+
+      "Sorting":
+`numbers = [5, 2, 4, 1]
+
+for i in range(len(numbers)):
+    for j in range(0, len(numbers)-i-1):
+        if numbers[j] > numbers[j+1]:
+            numbers[j], numbers[j+1] = numbers[j+1], numbers[j]
+
+print(numbers)`,
+
+      "Linked Lists":
+`class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+first = Node(10)
+second = Node(20)
+
+first.next = second
+
+print(first.data)`,
+
+      "Stacks":
+`stack = []
+
+stack.append(10)
+stack.append(20)
+
+print(stack.pop())
+print(stack)`,
+
+      "Queues":
+`from collections import deque
+
+queue = deque()
+
+queue.append(10)
+queue.append(20)
+
+print(queue.popleft())`,
+
+      "Hashing":
+`marks = {
+    "Nitin": 90,
+    "Rahul": 85
+}
+
+print(marks["Nitin"])`,
+
+      "Recursion":
+`def countdown(n):
+    if n == 0:
+        return
+
+    print(n)
+    countdown(n - 1)
+
+countdown(5)`,
+
+      "Two Pointers":
+`numbers = [1, 2, 3, 4, 5]
+
+left = 0
+right = len(numbers) - 1
+
+while left < right:
+    print(numbers[left], numbers[right])
+    left += 1
+    right -= 1`,
+
+      "Sliding Window":
+`numbers = [2, 1, 5, 1, 3]
+
+window = 3
+current = sum(numbers[:window])
+
+best = current
+
+for i in range(window, len(numbers)):
+    current += numbers[i]
+    current -= numbers[i-window]
+    best = max(best, current)
+
+print(best)`,
+
+      "Trees":
+`class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+root = Node(10)
+root.left = Node(5)
+root.right = Node(15)
+
+print(root.data)`,
+
+      "Binary Search Tree":
+`def search(root, target):
+    if root is None:
+        return False
+
+    if root.data == target:
+        return True
+
+    if target < root.data:
+        return search(root.left, target)
+
+    return search(root.right, target)`,
+
+      "Heaps & Priority Queue":
+`import heapq
+
+heap = []
+
+heapq.heappush(heap, 30)
+heapq.heappush(heap, 10)
+heapq.heappush(heap, 20)
+
+print(heapq.heappop(heap))`,
+
+      "Graphs":
+`graph = {
+    "A": ["B", "C"],
+    "B": ["A"],
+    "C": ["A"]
+}
+
+print(graph["A"])`,
+
+      "Greedy Algorithms":
+`coins = [10, 5, 2, 1]
+amount = 18
+
+count = 0
+
+for coin in coins:
+    count += amount // coin
+    amount %= coin
+
+print(count)`,
+
+      "Dynamic Programming":
+`def fib(n):
+    dp = [0] * (n + 1)
+
+    if n > 0:
+        dp[1] = 1
+
+    for i in range(2, n + 1):
+        dp[i] = dp[i-1] + dp[i-2]
+
+    return dp[n]
+
+print(fib(7))`,
+
+      "Backtracking":
+`def generate(i, current):
+    if i == 3:
+        print(current)
+        return
+
+    generate(i + 1, current + "0")
+    generate(i + 1, current + "1")
+
+generate(0, "")`,
+
+      "Advanced DSA":
+`# Advanced problems often combine
+# multiple data structures.
+
+numbers = [1, 2, 3, 4, 5]
+
+seen = set()
+
+for value in numbers:
+    seen.add(value)
+
+print(seen)`
+    },
+
+    "C":{
+      "Arrays":
+`#include <stdio.h>
+
+int main() {
+    int numbers[] = {10, 20, 30, 40};
+
+    printf("%d", numbers[0]);
+
+    return 0;
+}`,
+
+      "Searching":
+`#include <stdio.h>
+
+int main() {
+    int numbers[] = {4, 8, 15, 16};
+    int target = 15;
+
+    for(int i = 0; i < 4; i++) {
+        if(numbers[i] == target) {
+            printf("Found");
+            break;
+        }
+    }
+
+    return 0;
+}`,
+
+      "Sorting":
+`#include <stdio.h>
+
+int main() {
+    int a[] = {5, 2, 4, 1};
+
+    for(int i = 0; i < 4; i++) {
+        for(int j = 0; j < 3-i; j++) {
+            if(a[j] > a[j+1]) {
+                int temp = a[j];
+                a[j] = a[j+1];
+                a[j+1] = temp;
+            }
+        }
+    }
+
+    return 0;
+}`,
+
+      "Strings":
+`#include <stdio.h>
+
+int main() {
+    char text[] = "DSA";
+
+    printf("%c", text[0]);
+
+    return 0;
+}`,
+
+      "Recursion":
+`#include <stdio.h>
+
+void countdown(int n) {
+    if(n == 0)
+        return;
+
+    printf("%d\\n", n);
+    countdown(n - 1);
+}
+
+int main() {
+    countdown(5);
+    return 0;
+}`,
+
+      "Big-O & Complexity":
+`int numbers[] = {1,2,3,4,5};
+
+for(int i = 0; i < 5; i++) {
+    printf("%d\\n", numbers[i]);
+}
+
+/* One traversal -> O(n) */`
+    },
+
+    "C++":{
+      "Arrays":
+`#include <iostream>
+using namespace std;
+
+int main() {
+    int numbers[] = {10, 20, 30, 40};
+
+    cout << numbers[0];
+
+    return 0;
+}`,
+
+      "Searching":
+`#include <iostream>
+using namespace std;
+
+int main() {
+    int numbers[] = {4, 8, 15, 16};
+    int target = 15;
+
+    for(int i = 0; i < 4; i++) {
+        if(numbers[i] == target) {
+            cout << "Found";
+            break;
+        }
+    }
+
+    return 0;
+}`,
+
+      "Sorting":
+`#include <iostream>
+using namespace std;
+
+int main() {
+    int a[] = {5, 2, 4, 1};
+
+    for(int i = 0; i < 4; i++) {
+        for(int j = 0; j < 3-i; j++) {
+            if(a[j] > a[j+1]) {
+                swap(a[j], a[j+1]);
+            }
+        }
+    }
+
+    return 0;
+}`,
+
+      "Strings":
+`#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string text = "DSA";
+
+    cout << text[0];
+
+    return 0;
+}`,
+
+      "Linked Lists":
+`#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+int main() {
+    Node first;
+    Node second;
+
+    first.data = 10;
+    second.data = 20;
+
+    first.next = &second;
+
+    cout << first.data;
+
+    return 0;
+}`,
+
+      "Stacks":
+`#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    stack<int> s;
+
+    s.push(10);
+    s.push(20);
+
+    cout << s.top();
+    s.pop();
+
+    return 0;
+}`,
+
+      "Queues":
+`#include <iostream>
+#include <queue>
+using namespace std;
+
+int main() {
+    queue<int> q;
+
+    q.push(10);
+    q.push(20);
+
+    cout << q.front();
+    q.pop();
+
+    return 0;
+}`,
+
+      "Hashing":
+`#include <iostream>
+#include <unordered_map>
+using namespace std;
+
+int main() {
+    unordered_map<string,int> marks;
+
+    marks["Nitin"] = 90;
+    marks["Rahul"] = 85;
+
+    cout << marks["Nitin"];
+
+    return 0;
+}`,
+
+      "Recursion":
+`#include <iostream>
+using namespace std;
+
+void countdown(int n) {
+    if(n == 0)
+        return;
+
+    cout << n << endl;
+    countdown(n - 1);
+}
+
+int main() {
+    countdown(5);
+    return 0;
+}`,
+
+      "Two Pointers":
+`#include <iostream>
+using namespace std;
+
+int main() {
+    int a[] = {1,2,3,4,5};
+
+    int left = 0;
+    int right = 4;
+
+    while(left < right) {
+        cout << a[left] << " "
+             << a[right] << endl;
+
+        left++;
+        right--;
+    }
+
+    return 0;
+}`,
+
+      "Sliding Window":
+`#include <iostream>
+using namespace std;
+
+int main() {
+    int a[] = {2,1,5,1,3};
+    int k = 3;
+
+    int sum = 0;
+
+    for(int i = 0; i < k; i++)
+        sum += a[i];
+
+    cout << sum;
+
+    return 0;
+}`,
+
+      "Trees":
+`#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+};
+
+int main() {
+    Node root{10, nullptr, nullptr};
+
+    cout << root.data;
+
+    return 0;
+}`,
+
+      "Binary Search Tree":
+`bool search(Node* root, int target) {
+
+    if(root == nullptr)
+        return false;
+
+    if(root->data == target)
+        return true;
+
+    if(target < root->data)
+        return search(root->left, target);
+
+    return search(root->right, target);
+}`,
+
+      "Heaps & Priority Queue":
+`#include <iostream>
+#include <queue>
+using namespace std;
+
+int main() {
+    priority_queue<int> pq;
+
+    pq.push(30);
+    pq.push(10);
+    pq.push(20);
+
+    cout << pq.top();
+
+    return 0;
+}`,
+
+      "Graphs":
+`#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+
+    vector<int> graph[3];
+
+    graph[0].push_back(1);
+    graph[0].push_back(2);
+
+    cout << graph[0][0];
+
+    return 0;
+}`,
+
+      "Greedy Algorithms":
+`#include <iostream>
+using namespace std;
+
+int main() {
+
+    int coins[] = {10,5,2,1};
+    int amount = 18;
+    int count = 0;
+
+    for(int i = 0; i < 4; i++) {
+        count += amount / coins[i];
+        amount %= coins[i];
+    }
+
+    cout << count;
+
+    return 0;
+}`,
+
+      "Dynamic Programming":
+`#include <iostream>
+using namespace std;
+
+int main() {
+
+    int dp[8];
+
+    dp[0] = 0;
+    dp[1] = 1;
+
+    for(int i = 2; i <= 7; i++)
+        dp[i] = dp[i-1] + dp[i-2];
+
+    cout << dp[7];
+
+    return 0;
+}`,
+
+      "Backtracking":
+`#include <iostream>
+using namespace std;
+
+void generate(string current, int n) {
+
+    if(n == 0) {
+        cout << current << endl;
+        return;
+    }
+
+    generate(current + "0", n - 1);
+    generate(current + "1", n - 1);
+}
+
+int main() {
+    generate("", 3);
+    return 0;
+}`,
+
+      "Advanced DSA":
+`#include <iostream>
+#include <unordered_set>
+using namespace std;
+
+int main() {
+
+    int a[] = {1,2,3,4,5};
+
+    unordered_set<int> seen;
+
+    for(int x : a)
+        seen.insert(x);
+
+    cout << seen.size();
+
+    return 0;
+}`
+    },
+
+    "Java":{
+      "Arrays":
+`public class Main {
+    public static void main(String[] args) {
+
+        int[] numbers = {10,20,30,40};
+
+        System.out.println(numbers[0]);
+    }
+}`,
+
+      "Searching":
+`public class Main {
+    public static void main(String[] args) {
+
+        int[] numbers = {4,8,15,16};
+        int target = 15;
+
+        for(int i=0;i<numbers.length;i++) {
+            if(numbers[i] == target) {
+                System.out.println("Found");
+                break;
+            }
+        }
+    }
+}`,
+
+      "Sorting":
+`public class Main {
+    public static void main(String[] args) {
+
+        int[] a = {5,2,4,1};
+
+        for(int i=0;i<a.length;i++) {
+            for(int j=0;j<a.length-i-1;j++) {
+
+                if(a[j] > a[j+1]) {
+                    int temp = a[j];
+                    a[j] = a[j+1];
+                    a[j+1] = temp;
+                }
+            }
+        }
+    }
+}`,
+
+      "Strings":
+`public class Main {
+    public static void main(String[] args) {
+
+        String text = "DSA";
+
+        System.out.println(text.charAt(0));
+    }
+}`,
+
+      "Recursion":
+`public class Main {
+
+    static void countdown(int n) {
+
+        if(n == 0)
+            return;
+
+        System.out.println(n);
+        countdown(n - 1);
+    }
+
+    public static void main(String[] args) {
+        countdown(5);
+    }
+}`,
+
+      "Big-O & Complexity":
+`int[] numbers = {1,2,3,4,5};
+
+for(int number : numbers) {
+    System.out.println(number);
+}
+
+/*
+One complete traversal
+Time = O(n)
+*/`
+    },
+
+    "JavaScript":{
+      "Arrays":
+`const numbers = [10, 20, 30, 40];
+
+console.log(numbers[0]);
+
+for (const value of numbers) {
+  console.log(value);
+}`,
+
+      "Searching":
+`const numbers = [4, 8, 15, 16];
+const target = 15;
+
+for (let i = 0; i < numbers.length; i++) {
+  if (numbers[i] === target) {
+    console.log("Found at", i);
+    break;
+  }
+}`,
+
+      "Sorting":
+`const numbers = [5, 2, 4, 1];
+
+for (let i = 0; i < numbers.length; i++) {
+  for (let j = 0; j < numbers.length-i-1; j++) {
+
+    if (numbers[j] > numbers[j+1]) {
+      [numbers[j], numbers[j+1]] =
+      [numbers[j+1], numbers[j]];
+    }
+  }
+}
+
+console.log(numbers);`,
+
+      "Strings":
+`const text = "DSA";
+
+for (const ch of text) {
+  console.log(ch);
+}
+
+console.log(text[0]);`,
+
+      "Recursion":
+`function countdown(n) {
+
+  if (n === 0) return;
+
+  console.log(n);
+  countdown(n - 1);
+}
+
+countdown(5);`,
+
+      "Big-O & Complexity":
+`const numbers = [1,2,3,4,5];
+
+for (const number of numbers) {
+  console.log(number);
+}
+
+// One traversal -> O(n)`
+    }
+  };
+
+  let langData = examples[lang] || {};
+  let code = langData[topic.name];
+
+  if(!code){
+    if(lang==="C++"){
+      code =
+`#include <iostream>
+using namespace std;
+
+int main() {
+
+    // Example for ${topic.name}
+
+    cout << "Learn ${topic.name} step by step";
+
+    return 0;
+}`;
+    }
+    else if(lang==="C"){
+      code =
+`#include <stdio.h>
+
+int main() {
+
+    /* Example for ${topic.name} */
+
+    printf("Learn ${topic.name} step by step");
+
+    return 0;
+}`;
+    }
+    else if(lang==="Java"){
+      code =
+`public class Main {
+    public static void main(String[] args) {
+
+        // Example for ${topic.name}
+
+        System.out.println("Learn ${topic.name} step by step");
+    }
+}`;
+    }
+    else if(lang==="JavaScript"){
+      code =
+`// Example for ${topic.name}
+
+console.log("Learn ${topic.name} step by step");`;
+    }
+    else{
+      code =
+`# Example for ${topic.name}
+
+print("Learn ${topic.name} step by step")`;
+    }
+  }
+
+  return code;
+}
+
+function lineExplanation(code,lang){
+  const lines = code.split("\n");
+  return lines.map(function(line,index){
+    const clean = line.trim();
+
+    if(!clean){
+      return "<p><b>Line "+(index+1)+":</b> This blank line improves readability.</p>";
+    }
+
+    return "<p><b>Line "+(index+1)+":</b> "+escapeHTML(explainCodeLine(clean,lang)+"</p>");
+  }).join("");
+}
+
+function explainCodeLine(line,lang){
+
+  if(line.startsWith("#include")){
+    return "This imports a library needed by the program.";
+  }
+
+  if(line.includes("main")){
+    return "This is the main entry point of the program.";
+  }
+
+  if(line.includes("for")){
+    return "This loop repeats an operation for multiple values.";
+  }
+
+  if(line.includes("while")){
+    return "This loop continues while its condition remains true.";
+  }
+
+  if(line.includes("if")){
+    return "This condition checks whether a specific situation is true.";
+  }
+
+  if(line.includes("return")){
+    return "This returns a value or exits the current function.";
+  }
+
+  if(line.includes("print") || line.includes("cout") || line.includes("System.out") || line.includes("console.log")){
+    return "This displays information so we can see the result.";
+  }
+
+  if(line.includes("def ") || line.includes("function") || line.includes("void ")){
+    return "This defines a function that contains reusable instructions.";
+  }
+
+  if(line.includes("push") || line.includes("append")){
+    return "This adds a value to a data structure.";
+  }
+
+  if(line.includes("pop") || line.includes("popleft")){
+    return "This removes a value from the data structure.";
+  }
+
+  if(line.includes("=")){
+    return "This assigns a value to a variable or updates existing data.";
+  }
+
+  return "This line is part of the implementation and helps the algorithm perform its required operation.";
+}
+
+function escapeHTML(text){
+  return text
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;");
+}
+
+function renderHeader(){
+  return `
+    <div class="topbar">
+      <div class="brand">DSA <span>Master</span></div>
+      <div class="topstats">
+        <div class="stat">Coins: ${state.coins}</div>
+        <div class="stat">Streak: ${state.streak}</div>
+        <div class="stat">Progress: ${totalProgress()}%</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderNav(){
+  return `
+    <div class="nav">
+      <button data-action="nav" data-page="home">Home</button>
+      <button data-action="nav" data-page="learn">Learn</button>
+      <button data-action="nav" data-page="practice">Practice</button>
+      <button data-action="nav" data-page="companies">Companies</button>
+      <button data-action="nav" data-page="profile">Profile</button>
+    </div>
+  `;
+}
+
+function render(){
+  updateStreak();
+
+  const app = document.getElementById("app");
+
+  let content = "";
+
+  if(currentPage==="home") content = renderHome();
+  else if(currentPage==="learn") content = renderLearn();
+  else if(currentPage==="topic") content = renderTopic();
+  else if(currentPage==="lesson") content = renderLesson();
+  else if(currentPage==="practice") content = renderPracticeHome();
+  else if(currentPage==="practiceQuiz") content = renderPracticeQuiz();
+  else if(currentPage==="test") content = renderTest();
+  else if(currentPage==="companies") content = renderCompanies();
+  else if(currentPage==="company") content = renderCompany();
+  else if(currentPage==="profile") content = renderProfile();
+  else if(currentPage==="about") content = renderAbout();
+  else if(currentPage==="privacy") content = renderPrivacy();
+  else if(currentPage==="terms") content = renderTerms();
+  else if(currentPage==="contact") content = renderContact();
+  else if(currentPage==="disclaimer") content = renderDisclaimer();
+
+  app.innerHTML =
+    renderHeader() +
+    '<main class="page">'+content+'</main>' +
+    renderNav();
+}
+
+function renderHome(){
+
+  return `
+    <section class="hero">
+      <h1>Welcome back, ${escapeHTML(state.nickname)}</h1>
+      <p>
+        Build strong DSA fundamentals, practice interview questions,
+        earn coins and unlock company interview preparation.
+      </p>
+
+      <div class="grid" style="margin-top:16px">
+        <div class="card">
+          <div class="muted">Your Coins</div>
+          <div class="big-number">${state.coins}</div>
+          <button class="btn gold full" data-action="ad" data-amount="50">
+            Watch Ad +50 Coins
+          </button>
+          <button class="btn primary full" data-action="ad" data-amount="100">
+            Watch Ad +100 Coins
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="muted">DSA Progress</div>
+          <div class="big-number">${totalProgress()}%</div>
+          <div class="progress">
+            <div style="width:${totalProgress()}%"></div>
+          </div>
+          <p>${completedLessons()} of ${totalLessons()} lessons completed.</p>
+        </div>
+
+        <div class="card">
+          <div class="muted">Current Streak</div>
+          <div class="big-number">${state.streak}</div>
+          <p>Keep learning every day.</p>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title">Quick Actions</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Start Learning</h3>
+        <p>Follow the 20-topic DSA roadmap.</p>
+        <button class="btn primary" data-action="nav" data-page="learn">
+          Open Learn
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>Practice</h3>
+        <p>Solve topic questions and earn coins.</p>
+        <button class="btn blue" data-action="nav" data-page="practice">
+          Practice Now
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>Final Test</h3>
+        <p>Test your overall DSA knowledge.</p>
+        <button class="btn" data-action="nav" data-page="test">
+          Take Test
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>Company Interviews</h3>
+        <p>Use coins to unlock interview question banks.</p>
+        <button class="btn gold" data-action="nav" data-page="companies">
+          View Companies
+        </button>
+      </div>
+
+    </div>
+
+    <h2 class="section-title">Referral Program</h2>
+
+    <div class="card">
+      <h3>Invite Friends</h3>
+      <p>
+        Share your referral code with friends. In the real app,
+        referral verification and rewards should be handled by a secure backend.
+      </p>
+
+      <input class="input" id="refCode" value="${state.referralCode}" readonly>
+
+      <button class="btn primary" data-action="copyReferral">
+        Copy Referral Code
+      </button>
+
+      <button class="btn" data-action="shareReferral">
+        Share Referral
+      </button>
+
+      <p style="margin-top:10px">
+        Referrals: <b>${state.referrals}</b>
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>How the Coin System Works</h3>
+      <p>Complete lesson: +10 coins</p>
+      <p>Complete topic: +50 bonus coins</p>
+      <p>Correct practice answer: +5 coins</p>
+      <p>Final test: +10 coins per correct answer</p>
+      <p>Watch rewarded ad: +50 or +100 coins</p>
+    </div>
+
+    ${footer()}
+  `;
+}
+
+function renderLearn(){
+
+  return `
+    <div class="hero">
+      <h1>DSA Roadmap</h1>
+      <p>
+        Start from the basics and gradually move toward advanced interview-level concepts.
+        Topic 1 is free. Other topics can be unlocked with coins.
+      </p>
+    </div>
+
+    <div class="info">
+      <b>Learning rule:</b>
+      Each topic contains 4 lessons. Read the explanation,
+      study the code example, understand the code and then complete the lesson.
+    </div>
+
+    <div class="grid">
+      ${topics.map(function(topic,index){
+
+        const unlocked = !!state.topicUnlocked[topic.id];
+        const done = topicCompleted(topic.id);
+
+        const count = [0,1,2,3].filter(function(i){
+          return !!state.completed[topic.id+"_"+i];
+        }).length;
+
+        return `
+          <div class="card topic-card ${unlocked ? "" : "lock"}">
+
+            <div style="display:flex;justify-content:space-between;gap:10px">
+              <h3>${index+1}. ${topic.icon} ${topic.name}</h3>
+              ${done ? '<span class="badge">DONE</span>' : ''}
+            </div>
+
+            <p>${topic.desc}</p>
+
+            <div class="progress">
+              <div style="width:${count*25}%"></div>
+            </div>
+
+            <p>${count}/4 lessons completed</p>
+
+            ${
+              unlocked
+              ?
+              `<button class="btn primary full"
+                 data-action="topic"
+                 data-topic="${topic.id}">
+                 Open Topic
+               </button>`
+              :
+              `<div class="price">Unlock: ${topic.cost} coins</div>
+               <button class="btn gold full"
+                 data-action="unlockTopic"
+                 data-topic="${topic.id}">
+                 Unlock Topic
+               </button>
+               <button class="btn full"
+                 data-action="ad"
+                 data-amount="50">
+                 Watch Ad +50 Coins
+               </button>`
+            }
+
+          </div>
+        `;
+      }).join("")}
+    </div>
+
+    ${footer()}
+  `;
+}
+
+function openTopic(id){
+  currentTopic = id;
+  currentPage = "topic";
+  render();
+}
+
+function renderTopic(){
+
+  const topic = topics.find(function(t){
+    return t.id===currentTopic;
+  });
+
+  if(!topic){
+    currentPage="learn";
+    render();
+    return "";
+  }
+
+  return `
+    <button class="btn back" data-action="nav" data-page="learn">
+      Back to Topics
+    </button>
+
+    <div class="hero">
+      <h1>${topic.icon} ${topic.name}</h1>
+      <p>${topic.desc}</p>
+    </div>
+
+    <div class="card">
+      <h3>Topic Progress</h3>
+
+      <div class="progress">
+        <div style="width:${getTopicProgress(topic.id)}%"></div>
+      </div>
+
+      <p>${getTopicProgress(topic.id)}% completed</p>
+    </div>
+
+    <div class="card">
+      <h3>Lessons</h3>
+
+      <div class="lesson-list">
+
+        ${baseLessons[topic.name].map(function(name,index){
+
+          const completed = !!state.completed[topic.id+"_"+index];
+
+          return `
+            <div class="lesson-row">
+
+              <div>
+                <b>Lesson ${index+1}: ${name}</b>
+                <br>
+                <small>
+                  ${completed ? "Completed" : "Not completed"}
+                </small>
+              </div>
+
+              <button class="btn ${completed ? "" : "primary"}"
+                data-action="lesson"
+                data-topic="${topic.id}"
+                data-lesson="${index}">
+                ${completed ? "Review" : "Learn"}
+              </button>
+
+            </div>
+          `;
+
+        }).join("")}
+
+      </div>
+    </div>
+
+    ${footer()}
+  `;
+}
+
+function getTopicProgress(topicId){
+  let count=0;
+
+  for(let i=0;i<4;i++){
+    if(state.completed[topicId+"_"+i]) count++;
+  }
+
+  return count*25;
+}
+
+function openLesson(topicId,index){
+  currentTopic = topicId;
+  currentLesson = Number(index);
+  currentPage = "lesson";
+  render();
+}
+
+function renderLesson(){
+
+  const topic = topics.find(function(t){
+    return t.id===currentTopic;
+  });
+
+  if(!topic){
+    currentPage="learn";
+    render();
+    return "";
+  }
+
+  const content = lessonContent(topic,currentLesson);
+  const code = codeExample(topic,state.selectedLanguage,currentLesson);
+
+  const completed = !!state.completed[currentTopic+"_"+currentLesson];
+
+  return `
+    <button class="btn back"
+      data-action="topic"
+      data-topic="${topic.id}">
+      Back to ${topic.name}
+    </button>
+
+    <article class="lesson">
+
+      <h1>Lesson ${currentLesson+1}: ${content.lessonName}</h1>
+
+      <p class="muted">${topic.name}</p>
+
+      <h2>1. Concept Explanation</h2>
+
+      <p>${content.specific}</p>
+
+      <p>${content.concept}</p>
+
+      <h2>2. Why Do We Need This?</h2>
+
+      <p>${content.why}</p>
+
+      <h2>3. Easy Real-Life Example</h2>
+
+      <p>${content.analogy}</p>
+
+      <h2>4. How It Works Step by Step</h2>
+
+      <p>${content.working}</p>
+
+      <ol style="padding-left:22px;color:#c1cedb;line-height:1.8">
+        <li>Understand the input.</li>
+        <li>Understand the expected output.</li>
+        <li>Identify the repeated operation.</li>
+        <li>Choose the appropriate data structure or algorithm.</li>
+        <li>Write a simple solution.</li>
+        <li>Analyze time and space complexity.</li>
+        <li>Improve the solution if necessary.</li>
+      </ol>
+
+      <h2>5. Coding Example</h2>
+
+      <p>
+        Choose the language you want to study this concept in.
+      </p>
+
+      <div class="langbar">
+
+        ${languages.map(function(lang){
+
+          return `
+            <button
+              class="${state.selectedLanguage===lang ? "selected" : ""}"
+              data-action="language"
+              data-language="${lang}">
+              ${lang}
+            </button>
+          `;
+
+        }).join("")}
+
+      </div>
+
+      <div class="codebox">
+        <pre>${escapeHTML(code)}</pre>
+      </div>
+
+      <h2>6. Understand Every Part of the Code</h2>
+
+      <p>
+        Do not copy the code blindly. Read each instruction and ask:
+        What data is being stored? What operation is happening?
+        How many times can this operation run?
+      </p>
+
+      <div>
+        ${lineExplanation(code,state.selectedLanguage)}
+      </div>
+
+      <h2>7. Complexity</h2>
+
+      <p>
+        The exact complexity depends on the specific operation.
+        As a general interview rule, try to identify how the number of
+        operations changes when the input becomes larger.
+      </p>
+
+      <div class="info">
+        <b>Interview habit:</b>
+        Always say the expected time complexity and space complexity
+        when explaining your solution.
+      </div>
+
+      <h2>8. Common Mistakes</h2>
+
+      <p>${content.mistakes}</p>
+
+      <h2>9. Interview Tip</h2>
+
+      <p>${content.interview}</p>
+
+      <h2>10. Mini Takeaway</h2>
+
+      <p>${content.takeaway}</p>
+
+      <div class="${completed ? "reward" : "warning"}">
+
+        ${
+          completed
+          ?
+          "You have already completed this lesson. You can review it anytime."
+          :
+          "Complete this lesson to receive +10 coins."
+        }
+
+      </div>
+
+      ${
+        completed
+        ?
+        `<button class="btn primary full"
+          data-action="nextLesson">
+          Next Lesson
+        </button>`
+        :
+        `<button class="btn primary full"
+          data-action="completeLesson">
+          Complete Lesson +10 Coins
+        </button>`
+      }
+
+    </article>
+
+    ${footer()}
+  `;
+}
+
+function nextLesson(){
+
+  if(currentLesson < 3){
+    currentLesson++;
+    render();
+    return;
+  }
+
+  showToast("Topic completed!");
+
+  setTimeout(function(){
+    currentPage="topic";
+    render();
+  },700);
+}
+
+function renderPracticeHome(){
+
+  return `
+    <div class="hero">
+      <h1>Practice Arena</h1>
+      <p>
+        Choose a topic and solve a practice question.
+        Every correct answer gives you coins.
+      </p>
+    </div>
+
+    <div class="grid">
+
+      ${topics.map(function(topic){
+
+        const unlocked = !!state.topicUnlocked[topic.id];
+
+        return `
+          <div class="card ${unlocked ? "" : "lock"}">
+
+            <h3>${topic.name}</h3>
+
+            <p>${topic.desc}</p>
+
+            ${
+              unlocked
+              ?
+              `<button class="btn primary full"
+                data-action="startPractice"
+                data-topic="${topic.id}">
+                Practice +5
+              </button>`
+              :
+              `<div class="price">
+                Unlock topic first
+              </div>`
+            }
+
+          </div>
+        `;
+
+      }).join("")}
+
+    </div>
+
+    ${footer()}
+  `;
+}
+
+const practiceQuestions = {
+
+  t1:[
+    {
+      q:"Which notation describes an algorithm that grows linearly with input size?",
+      options:["O(1)","O(log n)","O(n)","O(n²)"],
+      answer:2
+    }
+  ],
+
+  t2:[
+    {
+      q:"What is the index of the first element in most zero-based arrays?",
+      options:["0","1","-1","2"],
+      answer:0
+    }
+  ],
+
+  t3:[
+    {
+      q:"What does a string usually represent?",
+      options:["A sequence of characters","Only numbers","Only objects","A CPU instruction"],
+      answer:0
+    }
+  ],
+
+  t4:[
+    {
+      q:"Which search requires sorted data to work in its normal form?",
+      options:["Linear search","Binary search","Random search","None"],
+      answer:1
+    }
+  ],
+
+  t5:[
+    {
+      q:"What is sorting?",
+      options:["Deleting data","Arranging data","Encrypting data","Copying data"],
+      answer:1
+    }
+  ],
+
+  t6:[
+    {
+      q:"What does a linked-list node normally contain?",
+      options:["Only a number","Data and a link/reference","Only a link","Nothing"],
+      answer:1
+    }
+  ],
+
+  t7:[
+    {
+      q:"Which principle does a stack follow?",
+      options:["FIFO","LIFO","Random","Sorted"],
+      answer:1
+    }
+  ],
+
+  t8:[
+    {
+      q:"Which principle does a normal queue follow?",
+      options:["LIFO","FIFO","Random","Binary"],
+      answer:1
+    }
+  ],
+
+  t9:[
+    {
+      q:"What is hashing mainly useful for?",
+      options:["Fast lookup","Drawing graphics","Playing audio","Sorting only"],
+      answer:0
+    }
+  ],
+
+  t10:[
+    {
+      q:"What must a recursive function normally have to stop?",
+      options:["A database","A base case","A queue","A compiler"],
+      answer:1
+    }
+  ],
+
+  t11:[
+    {
+      q:"What is the two-pointer technique based on?",
+      options:["Two indexes/pointers","Two databases","Two compilers","Two CPUs"],
+      answer:0
+    }
+  ],
+
+  t12:[
+    {
+      q:"Sliding window is especially useful for what?",
+      options:["Continuous ranges","Random memory","Compilers","File compression only"],
+      answer:0
+    }
+  ],
+
+  t13:[
+    {
+      q:"What is the top node of a tree called?",
+      options:["Leaf","Root","Edge","Index"],
+      answer:1
+    }
+  ],
+
+  t14:[
+    {
+      q:"In a normal BST, smaller values are placed on which side?",
+      options:["Usually left","Usually right","Always root","Nowhere"],
+      answer:0
+    }
+  ],
+
+  t15:[
+    {
+      q:"What can a priority queue provide quickly?",
+      options:["Highest/lowest priority element","Random element only","Only strings","Only arrays"],
+      answer:0
+    }
+  ],
+
+  t16:[
+    {
+      q:"What are the two major components of a graph?",
+      options:["Nodes and edges","Stacks and queues","Rows and columns","Classes and methods"],
+      answer:0
+    }
+  ],
+
+  t17:[
+    {
+      q:"What does a greedy algorithm choose repeatedly?",
+      options:["A locally best choice","A random choice","The largest array","A database"],
+      answer:0
+    }
+  ],
+
+  t18:[
+    {
+      q:"What does dynamic programming often store?",
+      options:["Previously solved results","Only input","Only strings","Passwords"],
+      answer:0
+    }
+  ],
+
+  t19:[
+    {
+      q:"What does backtracking do when a path fails?",
+      options:["Stops forever","Undoes the choice and tries another","Deletes the program","Sorts everything"],
+      answer:1
+    }
+  ],
+
+  t20:[
+    {
+      q:"What is important in advanced DSA interviews?",
+      options:["Pattern recognition and efficient solutions","Only memorizing syntax","Only typing speed","Only theory"],
+      answer:0
+    }
+  ]
+};
+
+function startPractice(topicId){
+  currentPracticeTopic=topicId;
+  practiceQuestion=0;
+  practiceScore=0;
+  currentPage="practiceQuiz";
+  render();
+}
+
+function renderPracticeQuiz(){
+
+  const topic = topics.find(function(t){
+    return t.id===currentPracticeTopic;
+  });
+
+  const questions = practiceQuestions[currentPracticeTopic] || practiceQuestions.t1;
+  const q = questions[practiceQuestion % questions.length];
+
+  return `
+    <button class="btn back"
+      data-action="nav"
+      data-page="practice">
+      Back to Practice
+    </button>
+
+    <div class="hero">
+      <h1>${topic.name} Practice</h1>
+      <p>Correct answer = +5 coins.</p>
+    </div>
+
+    <div class="question">
+
+      <h3>Question ${practiceQuestion+1}</h3>
+
+      <p style="margin-top:10px">${q.q}</p>
+
+      ${q.options.map(function(option,index){
+
+        return `
+          <button
+            class="option"
+            data-action="practiceAnswer"
+            data-answer="${index}"
+            data-correct="${q.answer}">
+            ${String.fromCharCode(65+index)}. ${option}
+          </button>
+        `;
+
+      }).join("")}
+
+    </div>
+  `;
+}
+
+function answerPractice(answer,correct){
+
+  const buttons = document.querySelectorAll("[data-action='practiceAnswer']");
+
+  buttons.forEach(function(btn){
+    btn.disabled=true;
+
+    const value=Number(btn.dataset.answer);
+
+    if(value===Number(correct)){
+      btn.classList.add("correct");
+    }
+
+    if(value===Number(answer) && value!==Number(correct)){
+      btn.classList.add("wrong");
+    }
+  });
+
+  if(Number(answer)===Number(correct)){
+    practiceScore++;
+    state.coins += 5;
+    saveState();
+    sound();
+    showToast("Correct! +5 coins");
+  }else{
+    showToast("Not quite. Review the concept.");
+  }
+
+  setTimeout(function(){
+    practiceQuestion++;
+
+    if(practiceQuestion>=5){
+      currentPage="practice";
+      showToast("Practice session complete!");
+    }
+
+    render();
+  },800);
+}
+
+const testQuestions = [
+  {
+    q:"What does O(n) mean?",
+    o:["Constant","Linear growth","Quadratic growth","No algorithm"],
+    a:1
+  },
+  {
+    q:"Which structure follows LIFO?",
+    o:["Queue","Stack","Graph","Array"],
+    a:1
+  },
+  {
+    q:"Binary search normally requires what?",
+    o:["Sorted data","Random data","A graph","A stack"],
+    a:0
+  },
+  {
+    q:"What is the root in a tree?",
+    o:["Bottom node","Top starting node","Edge","Array"],
+    a:1
+  },
+  {
+    q:"What does hashing help with?",
+    o:["Fast lookup","Drawing","Audio","Compiling"],
+    a:0
+  },
+  {
+    q:"What is a base case used for in recursion?",
+    o:["To stop recursion","To sort","To create a queue","To hash"],
+    a:0
+  },
+  {
+    q:"Which structure represents relationships?",
+    o:["Graph","Stack","Queue","String"],
+    a:0
+  },
+  {
+    q:"What does dynamic programming remember?",
+    o:["Previous results","Only syntax","Only input","Nothing"],
+    a:0
+  },
+  {
+    q:"What does sliding window process?",
+    o:["Continuous ranges","Only trees","Only graphs","Only classes"],
+    a:0
+  },
+  {
+    q:"What should you mention in an interview after solving a problem?",
+    o:["Time and space complexity","Only variable names","Only comments","Nothing"],
+    a:0
+  }
+];
+
+function renderTest(){
+
+  if(testIndex>=testQuestions.length){
+
+    return `
+      <div class="hero center">
+        <h1>Final Test Complete</h1>
+
+        <div class="big-number">
+          ${testScore}/${testQuestions.length}
+        </div>
+
+        <p>
+          Best Score: ${state.testBest}/${testQuestions.length}
+        </p>
+      </div>
+
+      <div class="reward">
+        You earned ${testScore*10} coins from this test.
+      </div>
+
+      <button class="btn primary full"
+        data-action="restartTest">
+        Take Test Again
+      </button>
+
+      <button class="btn full"
+        data-action="nav"
+        data-page="home">
+        Back Home
+      </button>
+
+      ${footer()}
+    `;
+  }
+
+  const q=testQuestions[testIndex];
+
+  return `
+    <div class="hero">
+      <h1>Final DSA Test</h1>
+      <p>Question ${testIndex+1} of ${testQuestions.length}</p>
+
+      <div class="progress">
+        <div style="width:${testIndex*10}%"></div>
+      </div>
+    </div>
+
+    <div class="question">
+
+      <h3>${q.q}</h3>
+
+      ${q.o.map(function(option,index){
+
+        return `
+          <button
+            class="option"
+            data-action="testAnswer"
+            data-answer="${index}"
+            data-correct="${q.a}">
+            ${String.fromCharCode(65+index)}. ${option}
+          </button>
+        `;
+
+      }).join("")}
+
+    </div>
+
+    <div class="info">
+      Each correct answer gives +10 coins.
+    </div>
+
+    ${footer()}
+  `;
+}
+
+function answerTest(answer,correct){
+
+  const buttons=document.querySelectorAll("[data-action='testAnswer']");
+
+  buttons.forEach(function(btn){
+    btn.disabled=true;
+
+    const value=Number(btn.dataset.answer);
+
+    if(value===Number(correct))
+      btn.classList.add("correct");
+
+    if(value===Number(answer) && value!==Number(correct))
+      btn.classList.add("wrong");
+  });
+
+  if(Number(answer)===Number(correct)){
+    testScore++;
+    state.coins+=10;
+    saveState();
+    sound();
+    showToast("Correct! +10 coins");
+  }else{
+    showToast("Wrong answer");
+  }
+
+  setTimeout(function(){
+
+    testIndex++;
+
+    if(testIndex>=testQuestions.length){
+
+      if(testScore>state.testBest){
+        state.testBest=testScore;
+      }
+
+      saveState();
+    }
+
+    render();
+
+  },750);
+}
+
+function restartTest(){
+  testIndex=0;
+  testScore=0;
+  currentPage="test";
+  render();
+}
+
+function renderCompanies(){
+
+  return `
+    <div class="hero">
+      <h1>Company Interview Zone</h1>
+      <p>
+        Companies are visible from the beginning.
+        Use your earned coins to unlock their interview question banks.
+      </p>
+    </div>
+
+    <div class="info">
+      <b>Recommended:</b>
+      Complete the DSA roadmap before attempting high-level company questions.
+      However, the company cards remain visible so you always know your target.
+    </div>
+
+    <div class="grid">
+
+      ${companies.map(function(company){
+
+        const unlocked=!!state.companyUnlocked[company.id];
+
+        return `
+          <div class="card">
+
+            <h3>${company.name}</h3>
+
+            <p>${company.desc}</p>
+
+            <div class="price">
+              ${unlocked ? "UNLOCKED" : company.cost+" coins"}
+            </div>
+
+            ${
+              unlocked
+              ?
+              `<button class="btn primary full"
+                data-action="company"
+                data-company="${company.id}">
+                Open Interview
+              </button>`
+              :
+              `<button class="btn gold full"
+                data-action="unlockCompany"
+                data-company="${company.id}">
+                Unlock for ${company.cost} Coins
+              </button>
+
+              <button class="btn full"
+                data-action="ad"
+                data-amount="100">
+                Watch Ad +100 Coins
+              </button>`
+            }
+
+          </div>
+        `;
+
+      }).join("")}
+
+    </div>
+
+    ${footer()}
+  `;
+}
+
+function openCompany(id){
+  currentCompany=id;
+  currentPage="company";
+  render();
+}
+
+const companyQuestions = [
+  {
+    q:"What is the time complexity of binary search?",
+    o:["O(n)","O(log n)","O(n²)","O(1) always"],
+    a:1
+  },
+  {
+    q:"Which structure uses FIFO?",
+    o:["Stack","Queue","Tree","Heap"],
+    a:1
+  },
+  {
+    q:"Which technique is useful for continuous subarrays?",
+    o:["Sliding window","Random search","Only recursion","Only sorting"],
+    a:0
+  },
+  {
+    q:"What is the purpose of a base case?",
+    o:["Stop recursion","Sort values","Create graph","Hash keys"],
+    a:0
+  },
+  {
+    q:"Which data structure is useful for fast key lookup?",
+    o:["Hash map","Stack only","Queue only","String only"],
+    a:0
+  },
+  {
+    q:"Which traversal visits root, left, right?",
+    o:["Inorder","Preorder","Postorder","Reverse"],
+    a:1
+  },
+  {
+    q:"What does a greedy algorithm usually do?",
+    o:["Choose a current best option","Try every option always","Never choose","Only sort"],
+    a:0
+  },
+  {
+    q:"What is dynamic programming useful for?",
+    o:["Overlapping subproblems","Only printing","Only input","Only sorting"],
+    a:0
+  },
+  {
+    q:"What is a graph made of?",
+    o:["Vertices and edges","Only arrays","Only strings","Only functions"],
+    a:0
+  },
+  {
+    q:"What should you do before coding an interview problem?",
+    o:["Understand the problem","Immediately type code","Guess","Skip examples"],
+    a:0
+  }
+];
+
+function renderCompany(){
+
+  const company=companies.find(function(c){
+    return c.id===currentCompany;
+  });
+
+  return `
+    <button class="btn back"
+      data-action="nav"
+      data-page="companies">
+      Back to Companies
+    </button>
+
+    <div class="hero">
+      <h1>${company.name} Interview</h1>
+      <p>${company.desc}</p>
+    </div>
+
+    <div class="warning">
+      These are practice questions for learning.
+      They are not guaranteed real interview questions.
+    </div>
+
+    <div class="grid">
+
+      ${companyQuestions.map(function(q,index){
+
+        return `
+          <div class="question">
+
+            <h3>${index+1}. ${q.q}</h3>
+
+            ${q.o.map(function(option,i){
+
+              return `
+                <button
+                  class="option"
+                  data-action="companyAnswer"
+                  data-answer="${i}"
+                  data-correct="${q.a}">
+                  ${String.fromCharCode(65+i)}. ${option}
+                </button>
+              `;
+
+            }).join("")}
+
+          </div>
+        `;
+
+      }).join("")}
+
+    </div>
+
+    ${footer()}
+  `;
+}
+
+function answerCompany(answer,correct){
+
+  const buttons=document.querySelectorAll("[data-action='companyAnswer']");
+
+  buttons.forEach(function(btn){
+    btn.disabled=true;
+
+    const value=Number(btn.dataset.answer);
+
+    if(value===Number(correct))
+      btn.classList.add("correct");
+
+    if(value===Number(answer) && value!==Number(correct))
+      btn.classList.add("wrong");
+  });
+
+  if(Number(answer)===Number(correct)){
+    state.coins+=15;
+    saveState();
+    sound();
+    showToast("Correct! +15 coins");
+  }else{
+    showToast("Wrong answer. Study the concept and try again.");
+  }
+}
+
+function renderProfile(){
+
+  return `
+    <div class="hero">
+      <h1>Your Profile</h1>
+      <p>Track your learning journey.</p>
+    </div>
+
+    <div class="card">
+
+      <h3>Nickname</h3>
+
+      <input
+        class="input"
+        id="nicknameInput"
+        value="${escapeHTML(state.nickname)}"
+        maxlength="20">
+
+      <button class="btn primary"
+        data-action="saveNickname">
+        Save Name
+      </button>
+
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Coins</h3>
+        <div class="big-number">${state.coins}</div>
+      </div>
+
+      <div class="card">
+        <h3>Lessons</h3>
+        <div class="big-number">${completedLessons()}</div>
+        <p>of ${totalLessons()}</p>
+      </div>
+
+      <div class="card">
+        <h3>Streak</h3>
+        <div class="big-number">${state.streak}</div>
+      </div>
+
+      <div class="card">
+        <h3>Best Test</h3>
+        <div class="big-number">${state.testBest}</div>
+        <p>out of 10</p>
+      </div>
+
+    </div>
+
+    <div class="card">
+      <h3>Achievements</h3>
+
+      <p>${completedLessons()>=1 ? "Completed first lesson" : "Complete your first lesson"}</p>
+      <p>${completedLessons()>=20 ? "20 lessons completed" : "Complete 20 lessons"}</p>
+      <p>${completedLessons()>=40 ? "Halfway DSA Master" : "Reach 40 lessons"}</p>
+      <p>${completedLessons()>=80 ? "Full DSA Roadmap Complete" : "Complete all 80 lessons"}</p>
+      <p>${state.testBest>=8 ? "Strong Test Score" : "Score 8/10 or higher"}</p>
+    </div>
+
+    <div class="card">
+      <h3>Learning Language</h3>
+      <p>Current lesson code language: <b>${state.selectedLanguage}</b></p>
+
+      <div class="langbar">
+        ${languages.map(function(lang){
+          return `
+            <button
+              class="${state.selectedLanguage===lang ? "selected" : ""}"
+              data-action="language"
+              data-language="${lang}">
+              ${lang}
+            </button>
+          `;
+        }).join("")}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Sound</h3>
+      <p>Small sound effect after rewards and important actions.</p>
+
+      <button class="btn"
+        data-action="toggleSound">
+        Sound: ${state.sound ? "ON" : "OFF"}
+      </button>
+    </div>
+
+    <h2 class="section-title">Professional Pages</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>About</h3>
+        <button class="btn" data-action="nav" data-page="about">
+          Open
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>Privacy Policy</h3>
+        <button class="btn" data-action="nav" data-page="privacy">
+          Open
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>Terms</h3>
+        <button class="btn" data-action="nav" data-page="terms">
+          Open
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>Contact</h3>
+        <button class="btn" data-action="nav" data-page="contact">
+          Open
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>Disclaimer</h3>
+        <button class="btn" data-action="nav" data-page="disclaimer">
+          Open
+        </button>
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <h3>Reset DSA Master</h3>
+
+      <p>
+        This deletes local progress, coins, unlocked topics,
+        company unlocks and test history from this browser.
+      </p>
+
+      <button class="btn red"
+        data-action="reset">
+        Reset Everything
+      </button>
+
+    </div>
+
+    ${footer()}
+  `;
+}
+
+function renderAbout(){
+
+  return `
+    <button class="btn back" data-action="nav" data-page="profile">
+      Back
+    </button>
+
+    <div class="hero">
+      <h1>About DSA Master</h1>
+      <p>
+        DSA Master is designed to make data structures and algorithms
+        easier for beginners through structured lessons, coding examples,
+        practice and interview preparation.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Our Learning Philosophy</h3>
+
+      <p>
+        First understand the concept.
+        Then see a coding example.
+        Then understand every important part of the code.
+        Finally practice the idea.
+      </p>
+
+      <p>
+        The goal is not to memorize solutions.
+        The goal is to develop problem-solving ability.
+      </p>
+    </div>
+
+    ${footer()}
+  `;
+}
+
+function renderPrivacy(){
+
+  return `
+    <button class="btn back" data-action="nav" data-page="profile">
+      Back
+    </button>
+
+    <div class="hero">
+      <h1>Privacy Policy</h1>
+      <p>Last updated: September 2026</p>
+    </div>
+
+    <div class="card">
+
+      <h3>Information Stored</h3>
+
+      <p>
+        This standalone version stores learning progress,
+        coins, settings, nickname and referral information
+        locally on the user's device using browser storage.
+      </p>
+
+      <h3>Advertising</h3>
+
+      <p>
+        The current CodePen version simulates rewarded advertisements.
+        A production Android version may use a third-party advertising
+        provider. The final published privacy policy must identify the
+        actual provider and explain its data practices.
+      </p>
+
+      <h3>Analytics</h3>
+
+      <p>
+        If analytics are added in the production application,
+        the final privacy policy must disclose what information is collected
+        and why it is collected.
+      </p>
+
+      <h3>Data Deletion</h3>
+
+      <p>
+        In this standalone version, local data can be deleted using
+        the Reset Everything option.
+      </p>
+
+    </div>
+
+    ${footer()}
+  `;
+}
+
+function renderTerms(){
+
+  return `
+    <button class="btn back" data-action="nav" data-page="profile">
+      Back
+    </button>
+
+    <div class="hero">
+      <h1>Terms and Conditions</h1>
+    </div>
+
+    <div class="card">
+
+      <p>
+        DSA Master is an educational platform intended to help users
+        learn data structures, algorithms and interview problem solving.
+      </p>
+
+      <h3>Educational Content</h3>
+
+      <p>
+        Company interview sections are educational practice material.
+        They should not be represented as guaranteed actual interview questions.
+      </p>
+
+      <h3>Coins</h3>
+
+      <p>
+        Coins are virtual in-app learning rewards.
+        They have no cash value and cannot be transferred or withdrawn.
+      </p>
+
+      <h3>Advertisements</h3>
+
+      <p>
+        Rewarded advertisements may provide virtual rewards.
+        Production advertising behavior depends on the advertising provider.
+      </p>
+
+      <h3>Changes</h3>
+
+      <p>
+        Features, lessons, rewards and terms may be updated as the product develops.
+      </p>
+
+    </div>
+
+    ${footer()}
+  `;
+}
+
+function renderContact(){
+
+  return `
+    <button class="btn back" data-action="nav" data-page="profile">
+      Back
+    </button>
+
+    <div class="hero">
+      <h1>Contact</h1>
+      <p>We want to improve DSA Master with useful feedback.</p>
+    </div>
+
+    <div class="card">
+
+      <h3>Support</h3>
+
+      <p>
+        For the production version, replace this section with
+        the official support email or contact form.
+      </p>
+
+      <p>
+        Suggested support address:
+        <b>support@dsamaster.example</b>
+      </p>
+
+      <div class="warning">
+        Before publishing, replace the example address with a real
+        support address owned by the application.
+      </div>
+
+    </div>
+
+    ${footer()}
+  `;
+}
+
+function renderDisclaimer(){
+
+  return `
+    <button class="btn back" data-action="nav" data-page="profile">
+      Back
+    </button>
+
+    <div class="hero">
+      <h1>Disclaimer</h1>
+    </div>
+
+    <div class="card">
+
+      <p>
+        DSA Master provides educational material for learning
+        data structures, algorithms and interview preparation.
+      </p>
+
+      <p>
+        Company names are used for educational categorization.
+        The application is not affiliated with or endorsed by
+        any company unless an official relationship is explicitly stated.
+      </p>
+
+      <p>
+        Interview questions shown inside the application are practice material
+        and should not be presented as guaranteed questions from any company.
+      </p>
+
+      <p>
+        Users should verify important career, employment and technical
+        information through official sources.
+      </p>
+
+    </div>
+
+    ${footer()}
+  `;
+}
+
+function footer(){
+
+  return `
+    <div class="footer">
+
+      <p>
+        DSA Master - Learn DSA. Practice Coding. Prepare for Interviews.
+      </p>
+
+      <p style="margin-top:8px">
+        <button data-action="nav" data-page="about"
+          style="background:none;color:#8fa7bf">
+          About
+        </button>
+        |
+        <button data-action="nav" data-page="privacy"
+          style="background:none;color:#8fa7bf">
+          Privacy
+        </button>
+        |
+        <button data-action="nav" data-page="terms"
+          style="background:none;color:#8fa7bf">
+          Terms
+        </button>
+        |
+        <button data-action="nav" data-page="contact"
+          style="background:none;color:#8fa7bf">
+          Contact
+        </button>
+      </p>
+
+    </div>
+  `;
+}
+
+document.addEventListener("click",function(event){
+
+  const btn=event.target.closest("[data-action]");
+
+  if(!btn) return;
+
+  const action=btn.dataset.action;
+
+  if(action==="nav"){
+    currentPage=btn.dataset.page;
+    render();
+    sound();
+    return;
+  }
+
+  if(action==="topic"){
+    openTopic(btn.dataset.topic);
+    sound();
+    return;
+  }
+
+  if(action==="unlockTopic"){
+    const topic=topics.find(function(t){
+      return t.id===btn.dataset.topic;
+    });
+
+    if(topic) unlockTopic(topic);
+    return;
+  }
+
+  if(action==="lesson"){
+    openLesson(btn.dataset.topic,btn.dataset.lesson);
+    sound();
+    return;
+  }
+
+  if(action==="completeLesson"){
+    completeLesson();
+    return;
+  }
+
+  if(action==="nextLesson"){
+    nextLesson();
+    return;
+  }
+
+  if(action==="language"){
+    state.selectedLanguage=btn.dataset.language;
+    saveState();
+    sound();
+    render();
+    return;
+  }
+
+  if(action==="ad"){
+    watchAd(Number(btn.dataset.amount));
+    return;
+  }
+
+  if(action==="startPractice"){
+    startPractice(btn.dataset.topic);
+    sound();
+    return;
+  }
+
+  if(action==="practiceAnswer"){
+    answerPractice(
+      Number(btn.dataset.answer),
+      Number(btn.dataset.correct)
+    );
+    return;
+  }
+
+  if(action==="testAnswer"){
+    answerTest(
+      Number(btn.dataset.answer),
+      Number(btn.dataset.correct)
+    );
+    return;
+  }
+
+  if(action==="restartTest"){
+    restartTest();
+    return;
+  }
+
+  if(action==="unlockCompany"){
+
+    const company=companies.find(function(c){
+      return c.id===btn.dataset.company;
+    });
+
+    if(company) unlockCompany(company);
+
+    return;
+  }
+
+  if(action==="company"){
+    openCompany(btn.dataset.company);
+    sound();
+    return;
+  }
+
+  if(action==="companyAnswer"){
+    answerCompany(
+      Number(btn.dataset.answer),
+      Number(btn.dataset.correct)
+    );
+    return;
+  }
+
+  if(action==="copyReferral"){
+
+    const input=document.getElementById("refCode");
+
+    if(input){
+      input.select();
+
+      try{
+        navigator.clipboard.writeText(state.referralCode);
+        showToast("Referral code copied");
+      }catch(e){
+        showToast("Code selected. Copy it manually.");
+      }
+    }
+
+    return;
+  }
+
+  if(action==="shareReferral"){
+
+    const text=
+      "Join me on DSA Master and learn DSA! My referral code is "+
+      state.referralCode;
+
+    if(navigator.share){
+
+      navigator.share({
+        title:"DSA Master",
+        text:text
+      }).catch(function(){});
+
+    }else{
+
+      try{
+        navigator.clipboard.writeText(text);
+        showToast("Referral message copied");
+      }catch(e){
+        showToast(text);
+      }
+
+    }
+
+    return;
+  }
+
+  if(action==="saveNickname"){
+
+    const input=document.getElementById("nicknameInput");
+
+    if(input){
+
+      const name=input.value.trim();
+
+      if(name){
+        state.nickname=name.substring(0,20);
+        saveState();
+        showToast("Name saved");
+        render();
+      }
+
+    }
+
+    return;
+  }
+
+  if(action==="toggleSound"){
+
+    state.sound=!state.sound;
+    saveState();
+    render();
+
+    return;
+  }
+
+  if(action==="reset"){
+
+    const yes=confirm(
+      "Reset all DSA Master progress, coins and unlocks?"
+    );
+
+    if(yes){
+
+      state=createDefaultState();
+      saveState();
+
+      currentPage="home";
+      currentTopic=null;
+      currentCompany=null;
+
+      showToast("Everything has been reset");
+      render();
+    }
+
+    return;
+  }
+
+});
+
+window.addEventListener("error",function(event){
+
+  console.error("DSA Master error:",event.error || event.message);
+
+  const app=document.getElementById("app");
+
+  if(app && currentPage){
+    const existing=document.getElementById("appError");
+
+    if(!existing){
+
+      const errorBox=document.createElement("div");
+
+      errorBox.id="appError";
+      errorBox.className="warning";
+      errorBox.style.margin="15px";
+      errorBox.innerHTML=
+        "<b>Something went wrong.</b><br>"+
+        "Please refresh the CodePen preview.";
+
+      app.prepend(errorBox);
+    }
+  }
+
+});
+
+setTimeout(function(){
+
+  currentPage="home";
+  render();
+
+},700);
+
+})();
+</script>
