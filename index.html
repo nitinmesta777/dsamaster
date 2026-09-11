@@ -1,483 +1,338 @@
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07111f;
+  --card:#0d1b2e;
+  --card2:#10243d;
+  --line:#1e3856;
+  --text:#f4f7fb;
+  --muted:#91a5bd;
+  --blue:#3b82f6;
+  --cyan:#22d3ee;
+  --green:#22c55e;
+  --yellow:#facc15;
+  --red:#ef4444;
+  --purple:#a855f7;
 }
-
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#08111f;
-  color:#f4f7fb;
+  background:var(--bg);
+  color:var(--text);
   min-height:100vh;
 }
-
-button{
-  border:0;
-  cursor:pointer;
-  font-family:inherit;
-}
-
-#app{
-  min-height:100vh;
-}
-
-.topbar{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:#0d1a2d;
-  border-bottom:1px solid #20324d;
-  padding:14px 16px;
+button,input,select{font:inherit}
+button{cursor:pointer;border:0}
+#app{min-height:100vh;padding-bottom:76px}
+.splash{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:var(--bg);
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:10px;
+  justify-content:center;
+  flex-direction:column;
+  gap:12px;
 }
+.splash-logo{
+  width:92px;height:92px;border-radius:24px;
+  background:linear-gradient(145deg,#facc15,#f59e0b);
+  display:flex;align-items:center;justify-content:center;
+  color:#07111f;font-size:40px;font-weight:900;
+  box-shadow:0 15px 50px #0008;
+}
+.splash h1{font-size:28px}
+.splash p{color:var(--muted)}
 
-.brand{
-  font-size:21px;
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:#07111fee;
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.brand{font-size:20px;font-weight:900}
+.brand small{display:block;color:var(--cyan);font-size:10px;letter-spacing:2px}
+.coins{
+  background:#172b45;
+  padding:8px 12px;
+  border-radius:20px;
+  color:var(--yellow);
   font-weight:800;
 }
-
-.brand span{
-  color:#42d392;
-}
-
-.topstats{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-}
-
-.stat{
-  background:#15253d;
-  border:1px solid #29415f;
-  border-radius:12px;
-  padding:7px 10px;
-  font-size:12px;
-}
-
-.page{
-  max-width:1050px;
-  margin:auto;
-  padding:20px 15px 90px;
-}
+.container{max-width:900px;margin:auto;padding:16px}
+.page-title{font-size:25px;font-weight:900;margin-bottom:6px}
+.page-subtitle{color:var(--muted);margin-bottom:18px}
 
 .hero{
-  background:linear-gradient(135deg,#122a48,#102039);
-  border:1px solid #29496d;
+  background:linear-gradient(145deg,#12335b,#0c1c31);
+  border:1px solid #27517e;
   border-radius:22px;
-  padding:24px;
-  margin-bottom:18px;
+  padding:20px;
+  margin-bottom:16px;
 }
-
-.hero h1{
-  font-size:30px;
-  margin-bottom:9px;
-}
-
-.hero p{
-  color:#b8c8da;
-  line-height:1.6;
-}
+.hero h2{font-size:25px;margin-bottom:8px}
+.hero p{color:#b8c9db;line-height:1.5}
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:14px;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
 }
-
+@media(min-width:700px){
+  .grid{grid-template-columns:repeat(3,1fr)}
+}
 .card{
-  background:#0e1c30;
-  border:1px solid #243b58;
-  border-radius:18px;
-  padding:17px;
-  margin-bottom:14px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:16px;
 }
-
-.card h3{
-  margin-bottom:8px;
+.card h3{margin-bottom:7px}
+.card p{color:var(--muted);line-height:1.45}
+.stat{
+  font-size:26px;
+  font-weight:900;
+  margin:6px 0;
 }
-
-.card p{
-  color:#aebed0;
-  line-height:1.5;
-  font-size:14px;
-}
+.stat-label{font-size:12px;color:var(--muted)}
 
 .btn{
-  padding:11px 14px;
+  width:100%;
+  padding:12px 14px;
   border-radius:12px;
-  background:#1c3555;
+  background:var(--blue);
   color:white;
-  font-weight:700;
+  font-weight:800;
   margin-top:10px;
 }
+.btn:active{transform:scale(.98)}
+.btn.secondary{background:#18304d}
+.btn.green{background:#16803d}
+.btn.yellow{background:#a77900}
+.btn.purple{background:#7131a8}
+.btn.red{background:#a52222}
+.btn:disabled{opacity:.5;cursor:not-allowed}
 
-.btn:hover{
-  filter:brightness(1.15);
+.section{
+  margin-top:22px;
 }
-
-.btn.primary{
-  background:#267c61;
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
 }
+.section-head h2{font-size:19px}
 
-.btn.gold{
-  background:#80621a;
+.topic{
+  position:relative;
+  overflow:hidden;
 }
-
-.btn.red{
-  background:#803b3b;
+.topic .num{
+  color:var(--cyan);
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:6px;
 }
-
-.btn.blue{
-  background:#285a91;
+.price{
+  display:inline-block;
+  margin-top:10px;
+  color:var(--yellow);
+  font-size:13px;
+  font-weight:800;
 }
-
-.btn.full{
-  width:100%;
+.locked{
+  opacity:.65;
 }
-
-.section-title{
-  margin:22px 0 12px;
-  font-size:22px;
-}
-
-.muted{
-  color:#91a5bb;
+.lock-icon{
+  float:right;
+  font-size:20px;
 }
 
 .progress{
-  width:100%;
-  height:9px;
-  background:#17283e;
-  border-radius:20px;
+  height:7px;
+  background:#182b42;
+  border-radius:10px;
   overflow:hidden;
+  margin-top:10px;
+}
+.progress span{
+  display:block;
+  height:100%;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
+}
+
+.lesson{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+}
+.lesson h2{font-size:23px;margin-bottom:12px}
+.lesson h3{font-size:17px;margin:20px 0 8px}
+.lesson p{
+  color:#c4d2e1;
+  line-height:1.65;
+  margin:8px 0;
+}
+.lesson ul{
+  margin:8px 0 8px 22px;
+  color:#c4d2e1;
+  line-height:1.7;
+}
+.code{
+  background:#050b13;
+  border:1px solid #20334b;
+  border-radius:12px;
+  padding:14px;
+  overflow:auto;
   margin:10px 0;
 }
-
-.progress div{
-  height:100%;
-  background:#42d392;
-  width:0%;
+.code pre{
+  color:#dbeafe;
+  font-family:monospace;
+  font-size:13px;
+  line-height:1.55;
+  white-space:pre-wrap;
+}
+.language-row{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding-bottom:4px;
+}
+.lang{
+  flex:0 0 auto;
+  padding:8px 12px;
+  border-radius:20px;
+  background:#142942;
+  color:#bcd0e6;
+}
+.lang.active{
+  background:var(--blue);
+  color:white;
 }
 
-.topic-card{
-  position:relative;
+.question{
+  background:#0b1829;
+  border:1px solid var(--line);
+  padding:15px;
+  border-radius:14px;
+  margin-top:12px;
 }
-
-.lock{
-  opacity:.72;
-}
-
-.price{
-  display:inline-block;
+.option{
+  width:100%;
+  text-align:left;
+  background:#12243a;
+  color:#dce8f5;
+  border:1px solid #203b59;
+  padding:12px;
+  border-radius:10px;
   margin-top:8px;
-  padding:5px 8px;
-  border-radius:8px;
-  background:#172d48;
-  color:#ffd866;
-  font-weight:700;
-  font-size:12px;
 }
-
-.badge{
-  display:inline-block;
-  padding:5px 8px;
-  border-radius:8px;
-  background:#183c32;
-  color:#6ce6b0;
-  font-size:12px;
-  font-weight:700;
+.option.correct{background:#125c35;border-color:var(--green)}
+.option.wrong{background:#632020;border-color:var(--red)}
+.feedback{
+  margin-top:10px;
+  color:#b9cbe0;
+  line-height:1.5;
 }
 
 .nav{
   position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
+  bottom:0;left:0;right:0;
+  height:68px;
+  background:#081523f5;
+  backdrop-filter:blur(12px);
+  border-top:1px solid var(--line);
   z-index:100;
-  background:#0b1728;
-  border-top:1px solid #223852;
   display:flex;
   justify-content:center;
-  gap:4px;
-  padding:8px 5px;
 }
-
-.nav button{
-  flex:1;
-  max-width:120px;
-  background:transparent;
-  color:#9db0c5;
-  padding:9px 4px;
-  border-radius:10px;
-  font-size:11px;
-}
-
-.nav button.active{
-  background:#19324e;
-  color:#fff;
-}
-
-.lesson{
-  background:#0e1c30;
-  border:1px solid #263e5c;
-  border-radius:20px;
-  padding:20px;
-}
-
-.lesson h1{
-  font-size:27px;
-  margin-bottom:10px;
-}
-
-.lesson h2{
-  margin:25px 0 9px;
-  color:#69dca8;
-  font-size:20px;
-}
-
-.lesson h3{
-  margin:18px 0 7px;
-}
-
-.lesson p{
-  color:#c1cedb;
-  line-height:1.75;
-  margin-bottom:10px;
-}
-
-.lesson ul{
-  padding-left:22px;
-  color:#c1cedb;
-  line-height:1.7;
-}
-
-.codebox{
-  background:#050b13;
-  border:1px solid #263a50;
-  border-radius:14px;
-  padding:15px;
-  overflow:auto;
-  margin:12px 0;
-}
-
-.codebox pre{
-  white-space:pre-wrap;
-  font-family:monospace;
-  color:#d8e6f4;
-  font-size:13px;
-  line-height:1.55;
-}
-
-.langbar{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  margin:12px 0;
-}
-
-.langbar button{
-  background:#172a43;
-  color:#b9c9db;
-  padding:9px 12px;
-  border-radius:9px;
-}
-
-.langbar button.selected{
-  background:#267c61;
-  color:white;
-}
-
-.lesson-list{
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-}
-
-.lesson-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  background:#13243a;
-  padding:13px;
-  border-radius:12px;
-  border:1px solid #233b57;
-}
-
-.lesson-row small{
-  color:#8fa4b9;
-}
-
-.question{
-  background:#0e1c30;
-  border:1px solid #263e5c;
-  border-radius:18px;
-  padding:18px;
-  margin-bottom:13px;
-}
-
-.option{
+.nav-inner{
   width:100%;
-  text-align:left;
-  background:#14263e;
-  color:#eaf1f7;
-  border:1px solid #2a425f;
-  padding:12px;
-  border-radius:11px;
-  margin-top:8px;
+  max-width:900px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
 }
-
-.option:hover{
-  background:#1b3554;
+.nav button{
+  background:none;
+  color:#7189a4;
+  font-size:11px;
+  font-weight:800;
 }
+.nav button.active{color:var(--cyan)}
+.nav-icon{font-size:21px;display:block;margin-bottom:2px}
 
-.option.correct{
-  background:#174b39;
-  border-color:#42d392;
-}
-
-.option.wrong{
-  background:#4b2222;
-  border-color:#d96d6d;
-}
-
-.reward{
-  background:#182f29;
-  border:1px solid #2d624f;
-  color:#79e5b4;
-  border-radius:15px;
-  padding:15px;
-  margin:12px 0;
-}
-
-.warning{
-  background:#332b17;
-  border:1px solid #685827;
-  color:#eadb9c;
-  border-radius:15px;
-  padding:15px;
-  margin:12px 0;
-}
-
-.info{
-  background:#172b43;
-  border:1px solid #2b496c;
-  color:#bcd0e5;
-  border-radius:15px;
-  padding:15px;
-  margin:12px 0;
-}
-
-.back{
-  margin-bottom:14px;
-}
-
-.center{
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:85px;
+  transform:translateX(-50%) translateY(20px);
+  background:#17283d;
+  border:1px solid #315070;
+  color:white;
+  padding:12px 16px;
+  border-radius:12px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:1000;
+  max-width:90%;
   text-align:center;
 }
-
-.big-number{
-  font-size:32px;
-  font-weight:800;
-  color:#ffd866;
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
 }
 
 .input{
   width:100%;
   padding:13px;
   border-radius:11px;
-  border:1px solid #304a67;
-  background:#0a1524;
+  border:1px solid var(--line);
+  background:#091727;
   color:white;
   outline:none;
-  margin-top:8px;
 }
-
-.footer{
-  text-align:center;
-  color:#6f8499;
-  font-size:12px;
-  margin-top:30px;
-  line-height:1.6;
-}
-
-.toast{
-  position:fixed;
-  top:75px;
-  right:15px;
-  z-index:200;
-  background:#152b43;
-  border:1px solid #365777;
-  color:#fff;
-  padding:12px 15px;
-  border-radius:12px;
-  opacity:0;
-  transform:translateY(-10px);
-  pointer-events:none;
-  transition:.25s;
-  max-width:280px;
-}
-
-.toast.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.splash{
-  min-height:100vh;
+.copybox{
   display:flex;
-  justify-content:center;
-  align-items:center;
+  gap:8px;
+  margin-top:10px;
+}
+.copybox .input{flex:1}
+
+.badge{
+  display:inline-block;
+  padding:5px 8px;
+  border-radius:8px;
+  background:#173352;
+  color:#9fd8ff;
+  font-size:11px;
+  font-weight:800;
+}
+
+.back{
+  margin-bottom:14px;
+}
+.empty{
+  padding:30px 10px;
   text-align:center;
-  background:radial-gradient(circle at center,#173554,#08111f 70%);
+  color:var(--muted);
 }
-
-.splash h1{
-  font-size:42px;
-  margin-bottom:8px;
-}
-
-.splash p{
-  color:#9fb2c6;
-}
-
-@media(max-width:600px){
-  .hero h1{
-    font-size:25px;
-  }
-
-  .topbar{
-    align-items:flex-start;
-  }
-
-  .brand{
-    font-size:18px;
-  }
-
-  .lesson{
-    padding:15px;
-  }
-
-  .lesson h1{
-    font-size:23px;
-  }
+.small{font-size:12px;color:var(--muted)}
+hr{
+  border:0;
+  border-top:1px solid var(--line);
+  margin:20px 0;
 }
 </style>
 
-<div id="app">
-  <div class="splash">
-    <div>
-      <h1>DSA <span style="color:#42d392">Master</span></h1>
-      <p>Learn. Practice. Prepare. Become Interview Ready.</p>
-    </div>
-  </div>
-</div>
-
+<div id="app"></div>
 <div id="toast" class="toast"></div>
 
 <script>
@@ -485,9 +340,15 @@ button{
 
 "use strict";
 
-const STORAGE_KEY = "dsa_master_complete_v4";
+/* =========================================================
+   DSA MASTER
+   Single-file / CodePen HTML
+   Native ads are configured in AppCreator24.
+   ========================================================= */
 
-const languages = [
+const STORAGE_KEY = "dsa_master_complete_v5";
+
+const LANGUAGES = [
   "Python",
   "C",
   "C++",
@@ -496,184 +357,463 @@ const languages = [
 ];
 
 const topics = [
-  {
-    id:"t1",
-    name:"Big-O & Complexity",
-    icon:"O",
-    desc:"Learn how to measure the speed and memory usage of algorithms.",
-    cost:0
-  },
-  {
-    id:"t2",
-    name:"Arrays",
-    icon:"A",
-    desc:"Store and process collections of values efficiently.",
-    cost:50
-  },
-  {
-    id:"t3",
-    name:"Strings",
-    icon:"S",
-    desc:"Work with text, characters, searching and transformations.",
-    cost:50
-  },
-  {
-    id:"t4",
-    name:"Searching",
-    icon:"?",
-    desc:"Find values efficiently using different searching techniques.",
-    cost:75
-  },
-  {
-    id:"t5",
-    name:"Sorting",
-    icon:"S",
-    desc:"Arrange data using popular sorting algorithms.",
-    cost:75
-  },
-  {
-    id:"t6",
-    name:"Linked Lists",
-    icon:"L",
-    desc:"Understand nodes, pointers and dynamic data structures.",
-    cost:100
-  },
-  {
-    id:"t7",
-    name:"Stacks",
-    icon:"T",
-    desc:"Learn the Last-In-First-Out data structure.",
-    cost:100
-  },
-  {
-    id:"t8",
-    name:"Queues",
-    icon:"Q",
-    desc:"Learn the First-In-First-Out data structure.",
-    cost:100
-  },
-  {
-    id:"t9",
-    name:"Hashing",
-    icon:"#",
-    desc:"Store and retrieve information quickly using hash tables.",
-    cost:125
-  },
-  {
-    id:"t10",
-    name:"Recursion",
-    icon:"R",
-    desc:"Solve problems by making a function call itself.",
-    cost:125
-  },
-  {
-    id:"t11",
-    name:"Two Pointers",
-    icon:"2",
-    desc:"Use two indexes to solve array and string problems efficiently.",
-    cost:150
-  },
-  {
-    id:"t12",
-    name:"Sliding Window",
-    icon:"W",
-    desc:"Solve continuous range problems efficiently.",
-    cost:150
-  },
-  {
-    id:"t13",
-    name:"Trees",
-    icon:"T",
-    desc:"Understand hierarchical data and tree traversal.",
-    cost:150
-  },
-  {
-    id:"t14",
-    name:"Binary Search Tree",
-    icon:"B",
-    desc:"Learn ordered tree structures and efficient searching.",
-    cost:175
-  },
-  {
-    id:"t15",
-    name:"Heaps & Priority Queue",
-    icon:"H",
-    desc:"Understand priority-based data processing.",
-    cost:175
-  },
-  {
-    id:"t16",
-    name:"Graphs",
-    icon:"G",
-    desc:"Model relationships between objects and networks.",
-    cost:200
-  },
-  {
-    id:"t17",
-    name:"Greedy Algorithms",
-    icon:"GR",
-    desc:"Make locally best choices to build a solution.",
-    cost:200
-  },
-  {
-    id:"t18",
-    name:"Dynamic Programming",
-    icon:"DP",
-    desc:"Break difficult problems into reusable smaller problems.",
-    cost:200
-  },
-  {
-    id:"t19",
-    name:"Backtracking",
-    icon:"BT",
-    desc:"Explore possibilities and undo choices when necessary.",
-    cost:200
-  },
-  {
-    id:"t20",
-    name:"Advanced DSA",
-    icon:"X",
-    desc:"Combine multiple concepts for interview-level problems.",
-    cost:250
-  }
+  ["t1","Big-O & Complexity",0],
+  ["t2","Arrays",50],
+  ["t3","Strings",50],
+  ["t4","Searching",75],
+  ["t5","Sorting",75],
+  ["t6","Linked Lists",100],
+  ["t7","Stacks",100],
+  ["t8","Queues",100],
+  ["t9","Hashing",125],
+  ["t10","Recursion",125],
+  ["t11","Two Pointers",150],
+  ["t12","Sliding Window",150],
+  ["t13","Trees",150],
+  ["t14","Binary Search Tree",175],
+  ["t15","Heaps & Priority Queue",175],
+  ["t16","Graphs",200],
+  ["t17","Greedy Algorithms",200],
+  ["t18","Dynamic Programming",200],
+  ["t19","Backtracking",200],
+  ["t20","Advanced DSA",250]
 ];
 
 const companies = [
-  {
-    id:"local",
-    name:"Local Company",
-    cost:1000,
-    desc:"Beginner-friendly interview questions."
-  },
-  {
-    id:"infosys",
-    name:"Infosys",
-    cost:2000,
-    desc:"Common service-company coding interview practice."
-  },
-  {
-    id:"tcs",
-    name:"TCS",
-    cost:3000,
-    desc:"Practice common aptitude and coding patterns."
-  },
-  {
-    id:"deloitte",
-    name:"Deloitte",
-    cost:5000,
-    desc:"Interview-oriented DSA preparation."
-  },
-  {
-    id:"jpmorgan",
-    name:"JPMorgan",
-    cost:7500,
-    desc:"Higher-level coding and problem-solving practice."
-  },
-  {
-    id:"top",
-    name:"Top Companies",
-    cost:10000,
-    desc:"Advanced interview-style question collection."
+  ["local","Local Companies",1000],
+  ["infosys","Infosys",2000],
+  ["tcs","TCS",3000],
+  ["deloitte","Deloitte",5000],
+  ["jpmorgan","JPMorgan",7500],
+  ["top","Top Companies",10000]
+];
+
+const lessonNames = {
+  t1:["Introduction to Big-O","Time Complexity","Space Complexity","Complexity Practice"],
+  t2:["Array Basics","Array Operations","Searching Arrays","Array Problems"],
+  t3:["String Basics","String Operations","String Searching","String Problems"],
+  t4:["Linear Search","Binary Search Basics","Search Comparisons","Search Problems"],
+  t5:["Sorting Basics","Bubble Sort","Selection & Insertion Sort","Sorting Problems"],
+  t6:["Linked List Basics","Insertion","Deletion","Linked List Problems"],
+  t7:["Stack Basics","Stack Operations","Applications of Stack","Stack Problems"],
+  t8:["Queue Basics","Queue Operations","Circular Queue","Queue Problems"],
+  t9:["Hashing Basics","Hash Tables","Collision Handling","Hashing Problems"],
+  t10:["Recursion Basics","Recursive Thinking","Recursion & Arrays","Recursion Problems"],
+  t11:["Two Pointer Basics","Opposite Pointers","Fast & Slow Pointers","Two Pointer Problems"],
+  t12:["Sliding Window Basics","Fixed Window","Variable Window","Window Problems"],
+  t13:["Tree Basics","Tree Traversal","DFS & BFS on Trees","Tree Problems"],
+  t14:["BST Basics","BST Search","BST Insert & Delete","BST Problems"],
+  t15:["Heap Basics","Min Heap & Max Heap","Priority Queue","Heap Problems"],
+  t16:["Graph Basics","Graph Representation","Traversal","Graph Problems"],
+  t17:["Greedy Basics","Greedy Choice","Scheduling Problems","Greedy Problems"],
+  t18:["DP Basics","Memoization","Tabulation","DP Problems"],
+  t19:["Backtracking Basics","Decision Trees","Permutations & Combinations","Backtracking Problems"],
+  t20:["Advanced DSA","Advanced Patterns","Optimization","Interview-Level Problems"]
+};
+
+function defaultState(){
+  return {
+    coins:1000,
+    streak:1,
+    nickname:"NITIN",
+    sound:true,
+    unlockedTopics:["t1"],
+    completedLessons:{},
+    completedTopics:{},
+    completedQuestions:{},
+    unlockedCompanies:[],
+    referralCode:"DSA"+Math.floor(100000+Math.random()*900000),
+    referralRewarded:false,
+    language:"Python",
+    page:"home"
+  };
+}
+
+let state;
+
+function loadState(){
+  try{
+    const raw=localStorage.getItem(STORAGE_KEY);
+    state=raw?Object.assign(defaultState(),JSON.parse(raw)):defaultState();
+  }catch(e){
+    state=defaultState();
+  }
+}
+
+function saveState(){
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+}
+
+function escapeHTML(value){
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+function toast(message){
+  const el=document.getElementById("toast");
+  el.textContent=message;
+  el.classList.add("show");
+  clearTimeout(toast.timer);
+  toast.timer=setTimeout(()=>el.classList.remove("show"),2600);
+}
+
+function sound(type){
+  if(!state.sound)return;
+  try{
+    const C=window.AudioContext||window.webkitAudioContext;
+    if(!C)return;
+    const ctx=new C();
+    const o=ctx.createOscillator();
+    const g=ctx.createGain();
+    o.connect(g);
+    g.connect(ctx.destination);
+    o.frequency.value=type==="success"?700:420;
+    g.gain.setValueAtTime(.04,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.12);
+    o.start();
+    o.stop(ctx.currentTime+.12);
+  }catch(e){}
+}
+
+function earnCoins(amount,message){
+  state.coins+=amount;
+  saveState();
+  sound("success");
+  toast(message||("+"+amount+" coins"));
+  render();
+}
+
+/* =========================================================
+   IMPORTANT:
+   NO FAKE REWARDED AD.
+   AppCreator24 native rewarded ads are configured outside
+   this HTML. This function deliberately does NOT award
+   coins merely because the button was pressed.
+   ========================================================= */
+
+function watchAd(amount){
+  toast(
+    "Rewarded ad must be completed through the native AppCreator24 ad. " +
+    "This HTML will not give free coins without a verified reward callback."
+  );
+}
+
+/* =========================================================
+   TOPIC / COMPANY
+   ========================================================= */
+
+function topicById(id){
+  return topics.find(t=>t[0]===id);
+}
+
+function isTopicUnlocked(id){
+  return state.unlockedTopics.includes(id);
+}
+
+function unlockTopic(id){
+  const t=topicById(id);
+  if(!t)return;
+
+  if(isTopicUnlocked(id)){
+    openTopic(id);
+    return;
+  }
+
+  if(state.coins<t[2]){
+    toast("Not enough coins. Use lessons/practice or rewarded ads.");
+    return;
+  }
+
+  state.coins-=t[2];
+  state.unlockedTopics.push(id);
+  saveState();
+  sound("success");
+  toast(t[1]+" unlocked!");
+  render();
+}
+
+function unlockCompany(id){
+  const c=companies.find(x=>x[0]===id);
+  if(!c)return;
+
+  if(state.unlockedCompanies.includes(id)){
+    openCompany(id);
+    return;
+  }
+
+  if(state.coins<c[2]){
+    toast("Not enough coins.");
+    return;
+  }
+
+  state.coins-=c[2];
+  state.unlockedCompanies.push(id);
+  saveState();
+  sound("success");
+  toast(c[1]+" interview unlocked!");
+  render();
+}
+
+/* =========================================================
+   LESSON DATA
+   ========================================================= */
+
+function conceptText(topicName,lessonIndex){
+  const common={
+    "Big-O & Complexity":
+      "Big-O describes how an algorithm's running time or memory usage grows as input size increases.",
+    "Arrays":
+      "An array stores elements in an ordered sequence and gives fast access using an index.",
+    "Strings":
+      "A string is a sequence of characters. Many interview problems involve searching, counting and transforming characters.",
+    "Searching":
+      "Searching means finding whether a target value exists and locating its position efficiently.",
+    "Sorting":
+      "Sorting arranges values into a chosen order and is a foundation for many algorithms.",
+    "Linked Lists":
+      "A linked list stores data in nodes connected using references or pointers.",
+    "Stacks":
+      "A stack follows LIFO: the last item inserted is the first item removed.",
+    "Queues":
+      "A queue follows FIFO: the first item inserted is the first item removed.",
+    "Hashing":
+      "Hashing maps keys to locations so that lookup can usually be performed very quickly.",
+    "Recursion":
+      "Recursion solves a problem by reducing it into smaller versions of the same problem.",
+    "Two Pointers":
+      "Two-pointer techniques maintain two positions while scanning a sequence.",
+    "Sliding Window":
+      "Sliding-window techniques maintain a changing range of elements instead of repeatedly processing the whole range.",
+    "Trees":
+      "A tree is a hierarchical structure made from nodes and edges.",
+    "Binary Search Tree":
+      "A BST maintains an ordering where smaller values are on the left and larger values are on the right.",
+    "Heaps & Priority Queue":
+      "A heap is a tree-based structure commonly used to efficiently retrieve the minimum or maximum element.",
+    "Graphs":
+      "A graph represents relationships between objects using vertices and edges.",
+    "Greedy Algorithms":
+      "Greedy algorithms repeatedly choose the locally best option with the goal of reaching a globally good solution.",
+    "Dynamic Programming":
+      "Dynamic programming solves overlapping subproblems while storing results so the same work is not repeated.",
+    "Backtracking":
+      "Backtracking explores possible choices and reverses a choice when it cannot lead to a valid solution.",
+    "Advanced DSA":
+      "Advanced DSA combines multiple data structures and algorithmic patterns to solve harder problems efficiently."
+  };
+
+  const base=common[topicName]||"This lesson introduces an important data-structures and algorithms concept.";
+
+  const extras=[
+    "First understand the idea before memorizing code. Focus on what changes at every step.",
+    "The most important skill is recognizing when this technique is useful.",
+    "Trace a small example manually before writing the program.",
+    "Interview questions usually test both correctness and complexity."
+  ];
+
+  return base+" "+extras[lessonIndex]||base;
+}
+
+function exampleCode(topicName,lang){
+
+  const examples={
+
+    "Big-O & Complexity":{
+      Python:
+`def find_first(arr):
+    return arr[0]
+
+# Accessing an array element is O(1).`,
+      C:
+`int findFirst(int arr[]) {
+    return arr[0];
+}`,
+      "C++":
+`int findFirst(vector<int>& arr) {
+    return arr[0];
+}`,
+      Java:
+`int findFirst(int[] arr) {
+    return arr[0];
+}`,
+      JavaScript:
+`function findFirst(arr) {
+  return arr[0];
+}`
+    },
+
+    "Arrays":{
+      Python:
+`arr = [10, 20, 30]
+print(arr[1])`,
+      C:
+`int arr[] = {10,20,30};
+printf("%d", arr[1]);`,
+      "C++":
+`vector<int> arr = {10,20,30};
+cout << arr[1];`,
+      Java:
+`int[] arr = {10,20,30};
+System.out.println(arr[1]);`,
+      JavaScript:
+`const arr = [10,20,30];
+console.log(arr[1]);`
+    },
+
+    "Strings":{
+      Python:
+`s = "DSA"
+print(len(s))
+print(s[0])`,
+      C:
+`char s[] = "DSA";
+printf("%c", s[0]);`,
+      "C++":
+`string s = "DSA";
+cout << s[0];`,
+      Java:
+`String s = "DSA";
+System.out.println(s.charAt(0));`,
+      JavaScript:
+`const s = "DSA";
+console.log(s[0]);`
+    },
+
+    "Searching":{
+      Python:
+`def linear_search(arr, target):
+    for i, value in enumerate(arr):
+        if value == target:
+            return i
+    return -1`,
+      C:
+`int linearSearch(int arr[], int n, int target) {
+    for(int i=0;i<n;i++)
+        if(arr[i]==target) return i;
+    return -1;
+}`,
+      "C++":
+`int linearSearch(vector<int>& arr, int target) {
+    for(int i=0;i<arr.size();i++)
+        if(arr[i]==target) return i;
+    return -1;
+}`,
+      Java:
+`int linearSearch(int[] arr, int target) {
+    for(int i=0;i<arr.length;i++)
+        if(arr[i]==target) return i;
+    return -1;
+}`,
+      JavaScript:
+`function linearSearch(arr, target) {
+  for(let i=0;i<arr.length;i++)
+    if(arr[i] === target) return i;
+  return -1;
+}`
+    },
+
+    "Sorting":{
+      Python:
+`def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr`,
+      C:
+`void bubbleSort(int arr[], int n) {
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n-i-1;j++)
+            if(arr[j]>arr[j+1]){
+                int t=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=t;
+            }
+}`,
+      "C++":
+`void bubbleSort(vector<int>& a) {
+    for(int i=0;i<a.size();i++)
+        for(int j=0;j+1<a.size()-i;j++)
+            if(a[j]>a[j+1])
+                swap(a[j],a[j+1]);
+}`,
+      Java:
+`void bubbleSort(int[] a) {
+    for(int i=0;i<a.length;i++)
+        for(int j=0;j+1<a.length-i;j++)
+            if(a[j]>a[j+1]){
+                int t=a[j];
+                a[j]=a[j+1];
+                a[j+1]=t;
+            }
+}`,
+      JavaScript:
+`function bubbleSort(a) {
+  for(let i=0;i<a.length;i++)
+    for(let j=0;j+1<a.length-i;j++)
+      if(a[j]>a[j+1])
+        [a[j],a[j+1]]=[a[j+1],a[j]];
+  return a;
+}`
+    }
+  };
+
+  if(examples[topicName] && examples[topicName][lang])
+    return examples[topicName][lang];
+
+  const fallback={
+    Python:
+`def solve(data):
+    # Understand the problem first
+    return data`,
+    C:
+`void solve(int data[]) {
+    /* Understand the problem first */
+}`,
+    "C++":
+`void solve(vector<int>& data) {
+    // Understand the problem first
+}`,
+    Java:
+`void solve(int[] data) {
+    // Understand the problem first
+}`,
+    JavaScript:
+`function solve(data) {
+  // Understand the problem first
+  return data;
+}`
+  };
+
+  return fallback[lang];
+}
+
+function lineExplanation(code,lang){
+  const lines=code.split("\n");
+
+  return lines.map((line,index)=>{
+    const clean=line.trim();
+
+    let explanation="This line is part of the algorithm.";
+
+    if(!clean){
+      explanation="Blank line used for readability.";
+    }else if(clean.startsWith("#")||clean.startsWith("//")||clean.startsWith("/*")){
+      explanation="This is a comment explaining the code.";
+    }else if(clean.includes("for")){
+      explanation="This line starts a loop and repeats an operation.";
+    }else if(clean.includes("if")){
+      explanation="This line checks a condition.";
+    }else if(clean.includes("return")){
+      explanation="This line returns a result from the function.";
+    }else if(clean.includes("print")||clean.includes("cout")||clean.includes("printf")||clean.includes("console.log")||clean.includes("println")){
+      explanation="This line displays output.";
+    }else if(clean.includes("def ")||clean.includes("function ")||clean.includes("void ")||clean.-style question collection."
   }
 ];
 
