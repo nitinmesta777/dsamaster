@@ -1,22 +1,4 @@
-<!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#08111f"><title>DSA Master</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;background:#08111f;color:#f4f7fb;min-height:100vh}
-button,input{font:inherit}button{cursor:pointer}.wrap{max-width:900px;margin:auto;padding:14px 14px 90px}
-.top{display:flex;justify-content:space-between;align-items:center;padding:8px 0 16px}.brand{font-size:22px;font-weight:900}.brand b{color:#ffd34d}
-.coins{background:#182942;border:1px solid #304866;border-radius:30px;padding:9px 13px;font-weight:800}
-.hero,.card,.topic,.company,.lesson,.qbox{background:#0f1d31;border:1px solid #263b55;border-radius:17px;padding:16px}
-.hero{margin-bottom:12px;background:#10243b}.hero h1{font-size:26px;margin-bottom:7px}.hero p,.small,.muted{color:#9eb0c8;line-height:1.5}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.list{display:grid;gap:10px}.section{margin:18px 0 10px}
-.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.progress{height:8px;background:#20324a;border-radius:9px;overflow:hidden;margin:9px 0}.bar{height:100%;background:#ffd34d}
-.btn{border:0;border-radius:11px;padding:11px 14px;background:#ffd34d;color:#111;font-weight:800}.btn.secondary{background:#203650;color:#fff}.btn.green{background:#35d07f}.btn:disabled{opacity:.45}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}.badge{display:inline-block;background:#203650;border-radius:20px;padding:5px 8px;font-size:12px;margin:2px}
-.lock{color:#ffd34d}.back{margin-bottom:12px}.lesson{line-height:1.65}.lesson h2{margin:9px 0}.lesson h3{color:#ffd34d;margin:17px 0 6px}.code{background:#06101b;border:1px solid #273c57;border-radius:11px;padding:12px;font:13px monospace;white-space:pre-wrap}
-.option{display:block;width:100%;text-align:left;margin-top:8px;padding:12px;border-radius:10px;border:1px solid #2a4361;background:#172943;color:#fff}.option.correct{background:#123a2a;border-color:#35d07f}.option.wrong{background:#421f28;border-color:#ff6677}
-.answer{margin-top:12px;padding:11px;background:#142b42;border-radius:10px}.nav{position:fixed;bottom:0;left:0;right:0;background:#0b1728;border-top:1px solid #253a55;z-index:10}.navin{max-width:900px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr)}.nav button{background:none;border:0;color:#9eb0c8;padding:10px 3px;font-size:12px}.nav button.active{color:#ffd34d;font-weight:900}
-input{width:100%;background:#081421;color:#fff;border:1px solid #2a4361;border-radius:10px;padding:11px;margin-top:7px}
+id #2a4361;border-radius:10px;padding:11px;margin-top:7px}
 .toast{position:fixed;bottom:72px;left:50%;transform:translateX(-50%) translateY(15px);opacity:0;background:#182b44;border:1px solid #36506e;padding:11px 14px;border-radius:11px;z-index:50;transition:.2s;max-width:92%;text-align:center}.toast.show{opacity:1;transform:translateX(-50%)}
 .adnote{border:1px dashed #36506e;border-radius:10px;padding:9px;text-align:center;color:#71849d;font-size:11px;margin-top:12px}
 @media(max-width:600px){.grid{grid-template-columns:1fr}.hero h1{font-size:23px}}
@@ -24,25 +6,1348 @@ input{width:100%;background:#081421;color:#fff;border:1px solid #2a4361;border-r
 <script>
 (function(){
 "use strict";
-var TOPICS=[{"id":"t1","name":"Big O & Complexity","cost":0},{"id":"t2","name":"Arrays","cost":50},{"id":"t3","name":"Strings","cost":50},{"id":"t4","name":"Searching","cost":75},{"id":"t5","name":"Sorting","cost":75},{"id":"t6","name":"Linked Lists","cost":100},{"id":"t7","name":"Stacks","cost":100},{"id":"t8","name":"Queues","cost":100},{"id":"t9","name":"Hashing","cost":125},{"id":"t10","name":"Recursion","cost":125},{"id":"t11","name":"Two Pointers","cost":150},{"id":"t12","name":"Sliding Window","cost":150},{"id":"t13","name":"Trees","cost":150},{"id":"t14","name":"Binary Search Tree","cost":175},{"id":"t15","name":"Heaps & Priority Queue","cost":175},{"id":"t16","name":"Graphs","cost":200},{"id":"t17","name":"Greedy Algorithms","cost":200},{"id":"t18","name":"Dynamic Programming","cost":200},{"id":"t19","name":"Backtracking","cost":200},{"id":"t20","name":"Advanced DSA","cost":250}], COMPANIES=[{"name":"Local Companies","cost":1000},{"name":"Infosys","cost":2000},{"name":"TCS","cost":3000},{"name":"Deloitte","cost":5000},{"name":"JPMorgan","cost":7500},{"name":"Top Companies","cost":10000}], BANK=[{"cat":"Big O","q":"Array index access is usually?","a":"O(1)","w":["O(log n)","O(n)"]},{"cat":"Big O","q":"A single loop over n items is usually?","a":"O(n)","w":["O(1)","O(n²)"]},{"cat":"Big O","q":"Two nested loops of n each are usually?","a":"O(n²)","w":["O(n)","O(log n)"]},{"cat":"Arrays","q":"Which structure gives direct indexed access?","a":"Array","w":["Stack","Graph"]},{"cat":"Arrays","q":"Inserting at the front of a normal array can cost?","a":"O(n)","w":["O(1) always","O(log n)"]},{"cat":"Arrays","q":"For a sorted array, target pair sum can often use?","a":"Two pointers","w":["DFS","Heapify"]},{"cat":"Strings","q":"A palindrome reads the same in which direction?","a":"Both directions","w":["Only left-to-right","Only right-to-left"]},{"cat":"Strings","q":"Character frequency is commonly stored in a?","a":"Hash map","w":["Queue","Heap"]},{"cat":"Strings","q":"A substring is?","a":"A contiguous part of a string","w":["Any permutation","A graph path"]},{"cat":"Searching","q":"Binary search requires the search space to be?","a":"Sorted/monotonic","w":["Random","A linked list"]},{"cat":"Searching","q":"Binary search worst-case time is?","a":"O(log n)","w":["O(n)","O(n²)"]},{"cat":"Searching","q":"Linear search worst-case time is?","a":"O(n)","w":["O(1)","O(log n)"]},{"cat":"Sorting","q":"Bubble sort worst-case time is?","a":"O(n²)","w":["O(log n)","O(n log n)"]},{"cat":"Sorting","q":"Merge sort time is typically?","a":"O(n log n)","w":["O(n²)","O(1)"]},{"cat":"Sorting","q":"Quicksort average time is typically?","a":"O(n log n)","w":["O(n)","O(log n)"]},{"cat":"Linked Lists","q":"A node normally stores data plus a?","a":"Reference/link","w":["Hash function","Priority"]},{"cat":"Linked Lists","q":"Insert at the head of a singly linked list is usually?","a":"O(1)","w":["O(n)","O(n²)"]},{"cat":"Linked Lists","q":"Cycle detection commonly uses?","a":"Slow and fast pointers","w":["Binary search","Merge sort"]},{"cat":"Stacks","q":"A stack follows?","a":"LIFO","w":["FIFO","Priority order"]},{"cat":"Stacks","q":"Adding to a stack is called?","a":"Push","w":["Pop","Dequeue"]},{"cat":"Stacks","q":"Removing the top item is called?","a":"Pop","w":["Push","Enqueue"]},{"cat":"Queues","q":"A queue follows?","a":"FIFO","w":["LIFO","Random order"]},{"cat":"Queues","q":"Adding to a queue is called?","a":"Enqueue","w":["Pop","Push"]},{"cat":"Queues","q":"Removing from the front is called?","a":"Dequeue","w":["Push","Peek"]},{"cat":"Hashing","q":"Average hash-table lookup is often?","a":"O(1)","w":["O(log n)","O(n²)"]},{"cat":"Hashing","q":"A collision means?","a":"Two keys map to the same bucket","w":["A tree is balanced","A stack is empty"]},{"cat":"Hashing","q":"A common collision method is?","a":"Chaining","w":["Binary search","DFS"]},{"cat":"Recursion","q":"A recursive function needs a?","a":"Base case","w":["Heap","Queue"]},{"cat":"Recursion","q":"Nested recursive calls are tracked by the?","a":"Call stack","w":["Hash table","Adjacency matrix"]},{"cat":"Recursion","q":"Factorial of 5 equals?","a":"120","w":["25","60"]},{"cat":"Two Pointers","q":"Two pointers means maintaining?","a":"Two indices/references","w":["Two arrays always","Two heaps"]},{"cat":"Two Pointers","q":"On a sorted pair-sum problem, if the sum is too small you often?","a":"Move the left pointer right","w":["Move both left","Restart"]},{"cat":"Two Pointers","q":"Two pointers can often reduce a sorted pair problem from?","a":"O(n²) to O(n)","w":["O(n) to O(n²)","O(log n) to O(n²)"]},{"cat":"Sliding Window","q":"A sliding window represents?","a":"A moving contiguous range","w":["A tree branch","A graph edge"]},{"cat":"Sliding Window","q":"Sliding window is especially useful for?","a":"Subarray/substring ranges","w":["Tree rotations","Heap construction"]},{"cat":"Sliding Window","q":"When a window violates a constraint, a common action is to?","a":"Move the left boundary","w":["Sort the whole input","Run DFS"]},{"cat":"Trees","q":"A node with no children is a?","a":"Leaf","w":["Root","Edge"]},{"cat":"Trees","q":"Traversal that visits root before children is?","a":"Preorder","w":["Inorder","Postorder"]},{"cat":"Trees","q":"Traversal left-root-right is?","a":"Inorder","w":["Preorder","BFS"]},{"cat":"Binary Search Tree","q":"In a typical BST, values in the left subtree are?","a":"Smaller than the node","w":["Always larger","Always equal"]},{"cat":"Binary Search Tree","q":"Balanced BST search is typically?","a":"O(log n)","w":["O(n²)","O(1)"]},{"cat":"Binary Search Tree","q":"A completely skewed BST can have search time?","a":"O(n)","w":["O(log n) always","O(1)"]},{"cat":"Heaps & Priority Queue","q":"The root of a min-heap is the?","a":"Minimum element","w":["Maximum element","Median"]},{"cat":"Heaps & Priority Queue","q":"Heap insertion is usually?","a":"O(log n)","w":["O(n²)","O(1) always"]},{"cat":"Heaps & Priority Queue","q":"A priority queue is commonly implemented with a?","a":"Heap","w":["String","Graph"]},{"cat":"Graphs","q":"A graph vertex is a?","a":"Node","w":["Sorting pass","Hash bucket"]},{"cat":"Graphs","q":"A graph edge represents a?","a":"Connection","w":["Stack frame","Tree height"]},{"cat":"Graphs","q":"A sparse graph is commonly stored using an?","a":"Adjacency list","w":["Only an array of values","Only a stack"]},{"cat":"Greedy Algorithms","q":"A greedy algorithm chooses?","a":"A locally best option","w":["Every possibility","A random option"]},{"cat":"Greedy Algorithms","q":"Greedy correctness requires?","a":"A problem-specific proof/greedy property","w":["No proof ever","Sorting twice"]},{"cat":"Greedy Algorithms","q":"Which is a classic greedy-style problem?","a":"Activity selection","w":["Binary search","String reversal"]},{"cat":"Dynamic Programming","q":"DP commonly uses?","a":"Overlapping subproblems and optimal substructure","w":["Only hashing","Only sorting"]},{"cat":"Dynamic Programming","q":"Memoization stores?","a":"Previously computed results","w":["Only input indexes","Graph edges"]},{"cat":"Dynamic Programming","q":"Bottom-up DP usually starts from?","a":"Base cases","w":["The final answer only","Random states"]},{"cat":"Backtracking","q":"Backtracking generally means?","a":"Choose, recurse, undo","w":["Sort, hash, stop","BFS only"]},{"cat":"Backtracking","q":"N-Queens is commonly solved using?","a":"Backtracking","w":["Binary search","Bubble sort"]},{"cat":"Backtracking","q":"A backtracking solution should stop exploring a branch when?","a":"The partial choice cannot lead to a valid solution","w":["The array is sorted","The queue is empty"]},{"cat":"Advanced DSA","q":"Before choosing an algorithm, inspect the?","a":"Constraints","w":["Variable names only","Screen size"]},{"cat":"Advanced DSA","q":"If n is extremely large, an O(n²) solution is usually?","a":"Risky/too slow","w":["Always ideal","Required"]},{"cat":"Advanced DSA","q":"A strong interview explanation should include?","a":"Approach, correctness and complexity","w":["Only final code","Only output"]}], LESSONS=["Concept & Why It Matters", "Core Operations & Patterns", "Code & Line-by-Line Thinking", "Practice, Complexity & Interview Tips"];
-var KEY="dsa_master_final_v6", state=load(), view="home", topicId=null, lessonNo=1, company=null, qi=0, answered=false, selected=null;
+var TOPICS=[{"id":"t1","name":"Big O & Complexity","cost":0},{"id":"t2","name":"Arrays","cost":50},{"id":"t3","name":"Strings","cost":50},{"id":"t4","name":"Searching","cost":75},{"id":"t5","name":"Sorting","cost":75},{"id":"t6","name":"Linked Lists","cost":100},{"id":"t7","name":"Stacks","cost":100},{"id":"t8","name":"Queues","cost":100},{"id":"t9","name":"Hashing","cost":125},{"id":"t10","name":"Recursion","cost":125},{"id":"t11","name":"Two Pointers","cost":150},{"id":"t12","name":"Sliding Window","cost":150},{"id":"t13","name":"Trees","cost":150},{"id":"t14","name":"Binary Search Tree","cost":175},{"id":"t15","name":"Heaps & Priority Queue","cost":175},{"id":"t16","name":"Graphs","cost":200},{"id":"t17","name":"Greedy Algorithms","cost":200},{"id":"t18","name":"Dynamic Programming","cost":200},{"id":"t19","name":"Backtracking","cost":200},{"id":"t20","name":"Advanced DSA","cost":250}], COMPANIES=[{"name":"Local Companies","cost":1000},{"name":"Infosys","cost":2000},{"name":"TCS","cost":3000},{"name":"Deloitte","cost":5000},{"name":"JPMorgan","cost":7500},{"name":"Top Companies","cost":10000}], BANK=[{"cat":"Big O","q":"Array index access is usually?","a":"O(1)","w":["O(log n)","O(n)"]},{"cat":"Big O","q":"A single loop over n items is usually?","a":"O(n)","w":["O(1)","O(n²)"]},{"cat":"Big O","q":"Two nested loops of n each are usually?","a":"O(n²)","w":["O(n)","O(log n)"]},{"cat":"Arrays","q":"Which structure gives direct indexed access?","a":"Array","w":["Stack","Graph"]},{"cat":"Arrays","q":"Inserting at the front of a normal array can cost?","a":"O(n)","w":["O(1) always","O(log n)"]},{"cat":"Arrays","q":"For a sorted array, target pair sum can often use?","a":"Two pointers","w":["DFS","Heapify"]},{"cat":"Strings","q":"A palindrome reads the same in which direction?","a":"Both directions","w":["Only left-to-right","Only right-to-left"]},{"cat":"Strings","q":"Character frequency is commonly stored in a?","a":"Hash map","w":["Queu<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#07111f">
+<title>DSA Master</title>
 
-function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s)return s}catch(e){}return{nickname:"NITIN",coins:1000,streak:1,sound:true,topics:{t1:true},companies:{},lessons:{},companyDone:{},totalCorrect:0,referral:"DSA"+Math.random().toString(36).slice(2,8).toUpperCase()}}
-function save(){localStorage.setItem(KEY,JSON.stringify(state))}
-function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
-function toast(s){var x=document.getElementById("toast");x.textContent=s;x.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(function(){x.classList.remove("show")},2200)}
-function spend(n){n=Number(n);if(state.coins<n){toast("Not enough coins");return false}state.coins-=n;save();return true}
-function earn(n){state.coins+=Number(n);save()}
-function progress(id){var x=state.lessons[id]||{},n=0;for(var k in x)if(x[k])n++;return Math.round(n/4*100)}
-function unlocked(id){return !!state.topics[id]}
-function head(){return '<div class="top"><div class="brand">DSA <b>MASTER</b></div><div class="coins">🪙 '+state.coins+'</div></div>'}
-function nav(){return'<div class="nav"><div class="navin"><button class="'+(view=="home"?"active":"")+'" data-a="home">🏠<br>Home</button><button class="'+(["learn","topic","lesson"].indexOf(view)>=0?"active":"")+'" data-a="learn">📚<br>Learn</button><button class="'+(["companies","company"].indexOf(view)>=0?"active":"")+'" data-a="companies">💼<br>Companies</button><button class="'+(view=="profile"?"active":"")+'" data-a="profile">👤<br>Profile</button></div></div>'}
-function render(){var a=document.getElementById("app");if(view=="home")a.innerHTML=home();else if(view=="learn")a.innerHTML=learn();else if(view=="topic")a.innerHTML=topic();else if(view=="lesson")a.innerHTML=lesson();else if(view=="companies")a.innerHTML=companiesPage();else if(view=="company")a.innerHTML=companyPage();else a.innerHTML=profile();a.innerHTML+=nav()}
-function home(){var done=0;TOPICS.forEach(function(t){if(unlocked(t.id))done++});return'<div class="wrap">'+head()+
-'<div class="hero"><h1>Master DSA. Build your future.</h1><p>Learn concepts, practice patterns and prepare for technical interviews on your phone.</p><div class="actions"><button class="btn" data-a="learn">Start Learning</button><button class="btn secondary" data-a="companies">Interview Practice</button></div></div>'+
-'<div class="grid"><div class="card"><h3>🪙 '+state.coins+' Coins</h3><p class="small">Complete lessons and answer practice questions correctly to earn coins.</p><div class="actions"><button class="btn" data-a="reward">Watch Rewarded Ad +50</button></div><p class="small" style="margin-top:7px">The webpage never fakes an ad reward. Native rewarded ads must be handled by the Android ad integration.</p></div><div class="card"><h3>🔥 Streak '+state.streak+'</h3><p class="small">'+done+'/20 topics unlocked</p><div class="progress"><div class="bar" style="width:'+Math.round(done/20*100)+'%"></div></div></div></div>'+
-'<h2 class="section">Quick Start</h2><div class="grid"><div class="card"><h3>📚 Learn</h3><p class="small">20 topics × 4 lessons = 80 lessons.</p><button class="btn" style="margin-top:10px" data-a="learn">Open Learn</button></div><div class="card"><h3>💼 Companies</h3><p class="small">6 interview tracks × 60 questions = 360 practice questions.</p><button class="btn" style="margin-top:10px" data-a="companies">Open Companies</button></div></div>'+
-'<div class="card" style="margin-top:12px"><h3>Referral</h3><p class="small">Code: <b>'+esc(state.referral)+'</b></p><div class="actions"><button class="btn secondary" data-a="copy" data-t="'+esc(state.referral)+'">Copy</button><button class="btn secondary" data-a="share">Share</button></div></div></div>'}
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+  background:#07111f;
+  color:#fff;
+  min-height:100vh;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+}
+
+#app{
+  min-height:100vh;
+}
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:#0b1729;
+  border-bottom:1px solid #1d3048;
+  padding:14px;
+}
+
+.header-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#38bdf8;
+}
+
+.coins{
+  background:#17263b;
+  padding:9px 13px;
+  border-radius:20px;
+  color:#facc15;
+  font-weight:bold;
+}
+
+.container{
+  width:100%;
+  max-width:1000px;
+  margin:auto;
+  padding:16px;
+}
+
+.hero{
+  background:linear-gradient(135deg,#10243d,#0c1627);
+  border:1px solid #203957;
+  border-radius:20px;
+  padding:22px;
+  margin-bottom:16px;
+}
+
+.hero h1{
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+.hero p{
+  color:#a9b9ca;
+  line-height:1.5;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;
+}
+
+.card{
+  background:#0d1b2d;
+  border:1px solid #20334c;
+  border-radius:16px;
+  padding:16px;
+  margin-bottom:12px;
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.card p{
+  color:#9fb0c2;
+  line-height:1.5;
+  font-size:14px;
+}
+
+.stat{
+  text-align:center;
+}
+
+.stat b{
+  display:block;
+  font-size:25px;
+  color:#38bdf8;
+  margin-bottom:5px;
+}
+
+.btn{
+  width:100%;
+  padding:13px;
+  border-radius:12px;
+  background:#1683d8;
+  color:white;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.btn:hover{
+  background:#2196e8;
+}
+
+.btn.secondary{
+  background:#17283e;
+}
+
+.btn.success{
+  background:#159447;
+}
+
+.btn.warning{
+  background:#c77d00;
+}
+
+.btn.danger{
+  background:#b83232;
+}
+
+.nav{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-top:16px;
+}
+
+.nav button{
+  background:#102138;
+  color:#d9e8f6;
+  padding:12px 5px;
+  border-radius:10px;
+  font-size:12px;
+}
+
+.nav button.active{
+  background:#1683d8;
+}
+
+.progress{
+  height:9px;
+  background:#18283b;
+  border-radius:10px;
+  overflow:hidden;
+  margin-top:10px;
+}
+
+.progress div{
+  height:100%;
+  background:#38bdf8;
+}
+
+.topic-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.price{
+  color:#facc15;
+  font-weight:bold;
+}
+
+.lock{
+  opacity:.65;
+}
+
+.lesson{
+  border-left:4px solid #38bdf8;
+}
+
+.lesson h2{
+  margin-bottom:12px;
+}
+
+.lesson h3{
+  color:#38bdf8;
+  margin:18px 0 8px;
+}
+
+.lesson p{
+  color:#c3d0dd;
+  line-height:1.7;
+}
+
+pre{
+  background:#050b13;
+  border:1px solid #1e344d;
+  border-radius:12px;
+  padding:14px;
+  overflow:auto;
+  margin-top:10px;
+  color:#d9f2ff;
+  line-height:1.5;
+}
+
+.option{
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:13px;
+  margin:8px 0;
+  border-radius:10px;
+  background:#122238;
+  color:white;
+  border:1px solid #263e59;
+}
+
+.option.selected{
+  border-color:#38bdf8;
+  background:#173752;
+}
+
+.option.correct{
+  background:#145c35;
+  border-color:#27c96f;
+}
+
+.option.wrong{
+  background:#642727;
+  border-color:#ff6b6b;
+}
+
+.small{
+  font-size:13px;
+  color:#8fa4b8;
+}
+
+.back{
+  margin-bottom:12px;
+}
+
+.toast{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#101d2e;
+  border:1px solid #29415d;
+  padding:12px 18px;
+  border-radius:12px;
+  display:none;
+  z-index:100;
+}
+
+.toast.show{
+  display:block;
+}
+
+input{
+  width:100%;
+  padding:13px;
+  border-radius:10px;
+  border:1px solid #29415d;
+  background:#091522;
+  color:#fff;
+  margin-top:8px;
+}
+
+.footer{
+  text-align:center;
+  color:#71859a;
+  font-size:12px;
+  padding:30px 10px;
+}
+
+.badge{
+  display:inline-block;
+  padding:5px 9px;
+  background:#162d45;
+  color:#7dd3fc;
+  border-radius:20px;
+  font-size:11px;
+}
+
+@media(max-width:500px){
+  .hero h1{
+    font-size:23px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .nav{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="app"></div>
+<div id="toast" class="toast"></div>
+
+<script>
+(function(){
+
+"use strict";
+
+/* =========================
+   DSA TOPICS
+========================= */
+
+const TOPICS = [
+{id:"t1",name:"Big-O & Complexity",cost:0},
+{id:"t2",name:"Arrays",cost:50},
+{id:"t3",name:"Strings",cost:50},
+{id:"t4",name:"Searching",cost:75},
+{id:"t5",name:"Sorting",cost:75},
+{id:"t6",name:"Linked Lists",cost:100},
+{id:"t7",name:"Stacks",cost:100},
+{id:"t8",name:"Queues",cost:100},
+{id:"t9",name:"Hashing",cost:125},
+{id:"t10",name:"Recursion",cost:125},
+{id:"t11",name:"Two Pointers",cost:150},
+{id:"t12",name:"Sliding Window",cost:150},
+{id:"t13",name:"Trees",cost:150},
+{id:"t14",name:"Binary Search Tree",cost:175},
+{id:"t15",name:"Heaps & Priority Queue",cost:175},
+{id:"t16",name:"Graphs",cost:200},
+{id:"t17",name:"Greedy Algorithms",cost:200},
+{id:"t18",name:"Dynamic Programming",cost:200},
+{id:"t19",name:"Backtracking",cost:200},
+{id:"t20",name:"Advanced DSA",cost:250}
+];
+
+/* =========================
+   COMPANIES
+========================= */
+
+const COMPANIES = [
+{id:"local",name:"Local Companies",cost:1000},
+{id:"infosys",name:"Infosys",cost:2000},
+{id:"tcs",name:"TCS",cost:3000},
+{id:"deloitte",name:"Deloitte",cost:5000},
+{id:"jpmorgan",name:"JPMorgan",cost:7500},
+{id:"top",name:"Top Companies",cost:10000}
+];
+
+/* =========================
+   QUESTION BANK
+   60 QUESTIONS
+========================= */
+
+const BANK = [
+
+{
+q:"What is the time complexity of accessing an array element by index?",
+o:["O(1)","O(n)","O(log n)","O(n²)"],
+a:0
+},
+
+{
+q:"What is Big-O used to describe?",
+o:["Algorithm growth rate","Variable type","Programming language","Memory address"],
+a:0
+},
+
+{
+q:"Which complexity is generally fastest?",
+o:["O(n²)","O(n)","O(log n)","O(1)"],
+a:3
+},
+
+{
+q:"Which data structure stores elements in contiguous memory?",
+o:["Array","Graph","Tree","Hash table"],
+a:0
+},
+
+{
+q:"What is the usual complexity of searching an unsorted array?",
+o:["O(1)","O(log n)","O(n)","O(n²)"],
+a:2
+},
+
+{
+q:"Which operation adds an element to the end of a dynamic array?",
+o:["Append","Pop front","Search","Sort"],
+a:0
+},
+
+{
+q:"Which Python type is immutable?",
+o:["List","Dictionary","Set","Tuple"],
+a:3
+},
+
+{
+q:"What does len('hello') return?",
+o:["4","5","6","0"],
+a:1
+},
+
+{
+q:"Which data structure is best for key-value storage?",
+o:["Array","Dictionary","Stack","Queue"],
+a:1
+},
+
+{
+q:"Binary search requires the data to be:",
+o:["Random","Sorted","Duplicated","Encrypted"],
+a:1
+},
+
+{
+q:"Binary search has average time complexity:",
+o:["O(n)","O(n²)","O(log n)","O(1)"],
+a:2
+},
+
+{
+q:"Which search checks elements one by one?",
+o:["Binary search","Linear search","DFS","Hash search"],
+a:1
+},
+
+{
+q:"Bubble sort repeatedly compares:",
+o:["Random elements","Adjacent elements","First elements","Trees"],
+a:1
+},
+
+{
+q:"Average complexity of bubble sort is:",
+o:["O(1)","O(log n)","O(n)","O(n²)"],
+a:3
+},
+
+{
+q:"Which sorting algorithm selects the minimum element repeatedly?",
+o:["Selection sort","Merge sort","Bubble sort","Heap sort"],
+a:0
+},
+
+{
+q:"A linked list node normally contains:",
+o:["Data and link","Only data","Only index","Only size"],
+a:0
+},
+
+{
+q:"What is insertion at the head of a linked list?",
+o:["Usually O(1)","Always O(n²)","Always O(log n)","Impossible"],
+a:0
+},
+
+{
+q:"Which structure uses nodes connected by pointers/references?",
+o:["Linked list","Integer","Float","String only"],
+a:0
+},
+
+{
+q:"Which data structure follows LIFO?",
+o:["Queue","Stack","Graph","Heap"],
+a:1
+},
+
+{
+q:"Which stack operation removes the top item?",
+o:["Push","Pop","Peek","Insert"],
+a:1
+},
+
+{
+q:"Which stack operation adds an item?",
+o:["Push","Pop","Delete","Search"],
+a:0
+},
+
+{
+q:"Which structure follows FIFO?",
+o:["Stack","Queue","Tree","Heap"],
+a:1
+},
+
+{
+q:"Which operation inserts into a queue?",
+o:["Enqueue","Pop","Peek","DFS"],
+a:0
+},
+
+{
+q:"Which operation removes from a queue?",
+o:["Dequeue","Push","Sort","Hash"],
+a:0
+},
+
+{
+q:"A hash table is mainly used for:",
+o:["Fast key lookup","Drawing UI","Sorting images","Playing audio"],
+a:0
+},
+
+{
+q:"Average hash-table lookup is approximately:",
+o:["O(n²)","O(log n)","O(1)","O(n!)"],
+a:2
+},
+
+{
+q:"A collision occurs when:",
+o:["Two keys map to same location","Array becomes empty","Stack overflows","Tree becomes balanced"],
+a:0
+},
+
+{
+q:"Recursion means a function:",
+o:["Calls itself","Never returns","Only uses arrays","Runs once"],
+a:0
+},
+
+{
+q:"What must recursion normally have to stop?",
+o:["Base case","Hash table","Queue","Loop variable only"],
+a:0
+},
+
+{
+q:"Factorial of 5 is:",
+o:["10","20","100","120"],
+a:3
+},
+
+{
+q:"Two-pointer technique commonly uses:",
+o:["Two indexes","Two computers","Two arrays always","Two functions always"],
+a:0
+},
+
+{
+q:"Two pointers are useful for many:",
+o:["Sorted-array problems","Audio problems","UI problems","Database passwords"],
+a:0
+},
+
+{
+q:"Sliding window is commonly used for:",
+o:["Subarray/substrings","Compilers only","Graphics only","Classes only"],
+a:0
+},
+
+{
+q:"A fixed-size sliding window moves by:",
+o:["Updating entering and leaving elements","Sorting everything","Deleting array","Restarting program"],
+a:0
+},
+
+{
+q:"A tree consists of:",
+o:["Nodes and edges","Only arrays","Only strings","Only queues"],
+a:0
+},
+
+{
+q:"The top node of a tree is called:",
+o:["Root","Leaf","Edge","Child"],
+a:0
+},
+
+{
+q:"A node with no children is called:",
+o:["Root","Leaf","Parent","Graph"],
+a:1
+},
+
+{
+q:"In a BST, smaller values normally go:",
+o:["Left","Right","Root only","Outside"],
+a:0
+},
+
+{
+q:"In a BST, larger values normally go:",
+o:["Left","Right","Nowhere","Root"],
+a:1
+},
+
+{
+q:"Inorder traversal of a BST gives:",
+o:["Sorted order","Reverse memory","Random order","Only root"],
+a:0
+},
+
+{
+q:"A heap is commonly used to implement:",
+o:["Priority queue","String","Stack only","Linked list only"],
+a:0
+},
+
+{
+q:"In a min-heap, the minimum element is at:",
+o:["Root","Last node","Random node","Middle only"],
+a:0
+},
+
+{
+q:"Graphs consist mainly of:",
+o:["Vertices and edges","Only arrays","Only roots","Only leaves"],
+a:0
+},
+
+{
+q:"BFS commonly uses a:",
+o:["Queue","Stack","Heap only","String"],
+a:0
+},
+
+{
+q:"DFS can be implemented using:",
+o:["Stack/recursion","Only queue","Only array sorting","Only hashing"],
+a:0
+},
+
+{
+q:"A greedy algorithm chooses:",
+o:["Best local option","Worst option","Random option","All options simultaneously"],
+a:0
+},
+
+{
+q:"Greedy algorithms always guarantee the optimal solution:",
+o:["Yes","No","Only in Python","Only for arrays"],
+a:1
+},
+
+{
+q:"Dynamic programming is useful when problems have:",
+o:["Overlapping subproblems","No structure","Only strings","Only graphs"],
+a:0
+},
+
+{
+q:"Memoization means:",
+o:["Caching computed results","Deleting results","Sorting arrays","Using queues"],
+a:0
+},
+
+{
+q:"Tabulation usually works:",
+o:["Bottom-up","Randomly","Only recursively","Without memory"],
+a:0
+},
+
+{
+q:"Backtracking explores possibilities and:",
+o:["Undoes choices when needed","Never returns","Always sorts","Uses only hashing"],
+a:0
+},
+
+{
+q:"Which is a classic backtracking problem?",
+o:["N-Queens","Simple addition","Printing text","Variable assignment"],
+a:0
+},
+
+{
+q:"What does pruning do in backtracking?",
+o:["Avoids useless branches","Adds branches","Sorts input","Creates arrays"],
+a:0
+},
+
+{
+q:"Which structure is commonly used for graph adjacency?",
+o:["Adjacency list","Single integer","Boolean only","String only"],
+a:0
+},
+
+{
+q:"What is the worst-case complexity of linear search?",
+o:["O(1)","O(log n)","O(n)","O(n²)"],
+a:2
+},
+
+{
+q:"Which algorithm is divide-and-conquer?",
+o:["Merge sort","Bubble sort","Linear search","Stack push"],
+a:0
+},
+
+{
+q:"Merge sort has typical complexity:",
+o:["O(n²)","O(n log n)","O(1)","O(log n)"],
+a:1
+},
+
+{
+q:"Which structure is useful for undo functionality?",
+o:["Stack","Queue","Graph","Heap"],
+a:0
+},
+
+{
+q:"Which structure is suitable for printer job processing?",
+o:["Queue","Stack","Tree","Set"],
+a:0
+},
+
+{
+q:"Which traversal visits nodes level by level?",
+o:["BFS","DFS","Inorder only","Postorder only"],
+a:0
+},
+
+{
+q:"Which technique can reduce repeated DP computation?",
+o:["Memoization","Randomization","Printing","Bubble sort"],
+a:0
+}
+
+];
+
+/* =========================
+   STATE
+========================= */
+
+const KEY = "DSA_MASTER_FINAL_V7";
+
+let state = loadState();
+
+let view = "home";
+let currentTopic = null;
+let currentLesson = 1;
+let currentCompany = null;
+let questionIndex = 0;
+let selectedAnswer = null;
+let answered = false;
+
+/* =========================
+   STORAGE
+========================= */
+
+function defaultState(){
+
+return {
+nickname:"NITIN",
+coins:1000,
+streak:1,
+sound:true,
+
+topics:{
+t1:true
+},
+
+lessons:{},
+
+companies:{},
+
+companyDone:{},
+
+totalCorrect:0,
+
+referral:"DSA"+Math.floor(100000+Math.random()*900000)
+};
+
+}
+
+function loadState(){
+
+try{
+
+const saved = localStorage.getItem(KEY);
+
+if(saved){
+
+return Object.assign(
+defaultState(),
+JSON.parse(saved)
+);
+
+}
+
+}catch(e){}
+
+return defaultState();
+
+}
+
+function save(){
+
+localStorage.setItem(KEY,JSON.stringify(state));
+
+}
+
+/* =========================
+   UTILITIES
+========================= */
+
+function esc(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+function toast(message){
+
+const t=document.getElementById("toast");
+
+t.textContent=message;
+
+t.classList.add("show");
+
+setTimeout(function(){
+
+t.classList.remove("show");
+
+},1800);
+
+}
+
+function earn(amount){
+
+state.coins += amount;
+
+save();
+
+toast("+"+amount+" coins");
+
+}
+
+function spend(amount){
+
+if(state.coins < amount){
+
+toast("Not enough coins");
+
+return false;
+
+}
+
+state.coins -= amount;
+
+save();
+
+return true;
+
+}
+
+function topicUnlocked(id){
+
+return !!state.topics[id];
+
+}
+
+function companyUnlocked(id){
+
+return !!state.companies[id];
+
+}
+
+function topicProgress(id){
+
+let count=0;
+
+for(let i=1;i<=4;i++){
+
+if(state.lessons[id+"_"+i]) count++;
+
+}
+
+return count;
+
+}
+
+/* =========================
+   HEADER
+========================= */
+
+function header(){
+
+return `
+<div class="header">
+
+<div class="header-row">
+
+<div class="logo">
+DSA <span>MASTER</span>
+</div>
+
+<div class="coins">
+🪙 ${state.coins}
+</div>
+
+</div>
+
+</div>
+`;
+
+}
+
+/* =========================
+   NAV
+========================= */
+
+function nav(){
+
+return `
+<div class="nav">
+
+<button data-action="home">🏠<br>Home</button>
+
+<button data-action="learn">📚<br>Learn</button>
+
+<button data-action="companies">🏢<br>Companies</button>
+
+<button data-action="profile">👤<br>Profile</button>
+
+</div>
+`;
+
+}
+
+/* =========================
+   HOME
+========================= */
+
+function home(){
+
+view="home";
+
+document.getElementById("app").innerHTML =
+
+header()+`
+
+<div class="container">
+
+<div class="hero">
+
+<h1>Master DSA 🚀</h1>
+
+<p>
+Learn Data Structures & Algorithms,
+practice coding problems and prepare
+for technical interviews.
+</p>
+
+<button class="btn" data-action="learn">
+Start Learning
+</button>
+
+</div>
+
+<div class="grid">
+
+<div class="card stat">
+<b>${state.coins}</b>
+Coins
+</div>
+
+<div class="card stat">
+<b>${state.streak}</b>
+Day Streak
+</div>
+
+<div class="card stat">
+<b>${state.totalCorrect}</b>
+Correct
+</div>
+
+<div class="card stat">
+<b>${Object.keys(state.lessons).length}</b>
+Lessons
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>🎁 Earn Coins</h3>
+
+<p>
+Watch a rewarded advertisement in the
+Android app to earn coins.
+</p>
+
+<button class="btn warning"
+data-action="reward">
+Watch Rewarded Ad +50
+</button>
+
+<p class="small">
+The webpage itself cannot verify completion
+of a native AppCreator24 rewarded ad.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⚡ Quick Access</h3>
+
+<button class="btn secondary"
+data-action="learn">
+📚 Continue Learning
+</button>
+
+<button class="btn secondary"
+data-action="companies">
+💼 Interview Preparation
+</button>
+
+<button class="btn secondary"
+data-action="profile">
+👤 My Profile
+</button>
+
+</div>
+
+${nav()}
+
+<div class="footer">
+DSA Master • Learn • Practice • Prepare
+</div>
+
+</div>
+`;
+
+}
+
+/* =========================
+   LEARN PAGE
+========================= */
+
+function learn(){
+
+view="learn";
+
+let html="";
+
+TOPICS.forEach(function(t){
+
+const unlocked=topicUnlocked(t.id);
+
+const p=topicProgress(t.id);
+
+html+=`
+
+<div class="card ${unlocked?"":"lock"}">
+
+<div class="topic-title">
+
+<div>
+
+<h3>${esc(t.name)}</h3>
+
+<span class="badge">
+${p}/4 lessons
+</span>
+
+</div>
+
+<div class="price">
+
+${unlocked?"OPEN":"🪙 "+t.cost}
+
+</div>
+
+</div>
+
+<div class="progress">
+
+<div style="width:${p*25}%"></div>
+
+</div>
+
+<button class="btn"
+data-action="${unlocked?"topic":"unlock-topic"}"
+data-id="${t.id}">
+
+${unlocked?"Study Topic":"Unlock Topic"}
+
+</button>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("app").innerHTML=
+
+header()+`
+
+<div class="container">
+
+<button class="btn secondary back"
+data-action="home">
+← Back
+</button>
+
+<div class="hero">
+
+<h1>📚 Learn DSA</h1>
+
+<p>
+20 complete DSA topics • 4 lessons per topic
+• 80 lessons total.
+</p>
+
+</div>
+
+${html}
+
+${nav()}
+
+</div>
+`;
+
+}
+
+/* =========================
+   TOPIC PAGE
+========================= */
+
+function topic(id){
+
+currentTopic=id;
+
+const t=TOPICS.find(x=>x.id===id);
+
+if(!t) return home();
+
+if(!topicUnlocked(id)){
+
+toast("Topic locked");
+
+return learn();
+
+}
+
+let html="";
+
+for(let i=1;i<=4;i++){
+
+const done=!!state.lessons[id+"_"+i];
+
+html+=`
+
+<div class="card">
+
+<h3>
+Lesson ${i}
+${done?" ✅":""}
+</h3>
+
+<p>
+Complete this lesson to continue your DSA journey.
+</p>
+
+<button class="btn"
+data-action="lesson"
+data-id="${id}"
+data-lesson="${i}">
+
+${done?"Review Lesson":"Open Lesson"}
+
+</button>
+
+</div>
+
+`;
+
+}
+
+document.getElementById("app").innerHTML=
+
+header()+`
+
+<div class="container">
+
+<button class="btn secondary back"
+data-action="learn">
+← All Topics
+</button>
+
+<div class="hero">
+
+<h1>${esc(t.name)}</h1>
+
+<p>
+${topicProgress(id)}/4 lessons completed
+</p>
+
+</div>
+
+${html}
+
+</div>
+`;
+
+}
+
+/* =========================
+   LESSON
+========================= */
+
+function lesson(id,no){
+
+currentTopic=id;
+
+currentLesson=no;
+
+const t=TOPICS.find(x=>x.id===id);
+
+document.getElementById("app").innerHTML=
+
+header()+`
+
+<div class="container">
+
+<button class="btn secondary back"
+data-action="topic"
+data-id="${id}">
+← Back to Topic
+</button>
+
+<div class="card lesson">
+
+<span class="badge">
+${esc(t.name)}
+</span>
+
+<h2>Lesson ${no}: ${lessonTitle(t.name,no)}</h2>
+
+<h3>📖 Concept</h3>
+
+<p>
+${lessonConcept(t.name,no)}
+</p>
+
+<h3>🎯 Why do we need it?</h3>
+
+<p>
+Efficient algorithms help programs solve
+larger problems using less time and memory.
+Understanding the data structure and its
+complexity helps you choose the right solution.
+</p>
+
+<h3>💡 Simple Analogy</h3>
+
+<p>
+Think about organizing books in a library.
+If every book is randomly placed, finding one
+takes more time. A good data structure organizes
+information so operations become easier.
+</p>
+
+<h3>🪜 Step-by-Step</h3>
+
+<p>
+1. Understand the input.<br>
+2. Identify the required operation.<br>
+3. Select an appropriate data structure.<br>
+4. Design the algorithm.<br>
+5. Check time and space complexity.<br>
+6. Test edge cases.
+</p>
+
+<h3>💻 Python Example</h3>
+
+<pre>def solve(data):
+    # choose the correct
+    # data structure/pattern
+    result = data
+    return result</pre>
+
+<h3>🧠 Line-by-Line Explanation</h3>
+
+<p>
+<b>Line 1:</b> Defines a Python function.<br><br>
+<b>Line 2:</b> Represents the algorithmic choice.<br><br>
+<b>Line 4:</b> Stores the working result.<br><br>
+<b>Line 5:</b> Returns the result.
+</p>
+
+<h3>⏱ Complexity</h3>
+
+<p>
+Always analyze both time and space.
+For example, direct array access is generally
+O(1), while scanning every element is O(n).
+</p>
+
+<h3>⚠️ Common Mistakes</h3>
+
+<p>
+• Ignoring constraints<br>
+• Choosing a data structure without analysis<br>
+• Forgetting edge cases<br>
+• Writing code before understanding the problem
+</p>
+
+<h3>💼 Interview Tip</h3>
+
+<p>
+When explaining your solution in an interview,
+state the approach first, the+'</b></p><div class="actions"><button class="btn secondary" data-a="copy" data-t="'+esc(state.referral)+'">Copy</button><button class="btn secondary" data-a="share">Share</button></div></div></div>'}
 function learn(){return'<div class="wrap">'+head()+'<button class="btn secondary back" data-a="home">← Back</button><h1>Learn DSA</h1><p class="muted" style="margin:7px 0 14px">20 topics · 4 lessons each</p><div class="list">'+TOPICS.map(function(t){var u=unlocked(t.id),p=progress(t.id);return'<div class="topic"><div class="row"><div><h3>'+esc(t.name)+'</h3><p class="small">'+p+'% complete</p></div><span class="'+(u?"badge":"lock")+'">'+(u?"Unlocked":"🔒 "+t.cost+" 🪙")+'</span></div><div class="progress"><div class="bar" style="width:'+p+'%"></div></div><button class="btn '+(u?"":"secondary")+'" data-a="'+(u?"topic":"unlock")+'" data-id="'+t.id+'">'+(u?"Open Topic":"Unlock for "+t.cost+" 🪙")+'</button></div>'}).join("")+'</div></div>'}
 function topic(){var t=TOPICS.find(function(x){return x.id==topicId});if(!t)return learn();return'<div class="wrap">'+head()+'<button class="btn secondary back" data-a="learn">← Topics</button><div class="hero"><h1>'+esc(t.name)+'</h1><p>Four lessons from fundamentals to interview thinking.</p></div><div class="list">'+LESSONS.map(function(n,i){var d=!!((state.lessons[t.id]||{})["l"+(i+1)]);return'<div class="topic"><div class="row"><div><h3>Lesson '+(i+1)+': '+esc(n)+'</h3><p class="small">'+(d?"Completed":"Not completed")+'</p></div><span class="badge">'+(d?"✓ Done":"+10 🪙")+'</span></div><button class="btn" style="margin-top:9px" data-a="lesson" data-id="'+t.id+'" data-n="'+(i+1)+'">'+(d?"Review":"Learn")+'</button></div>'}).join("")+'</div></div>'}
 function lesson(){var t=TOPICS.find(function(x){return x.id==topicId}),d=!!((state.lessons[t.id]||{})["l"+lessonNo]);var code="def solve(data):\\n    # choose a data structure/pattern from the constraints\\n    return data";return'<div class="wrap">'+head()+'<button class="btn secondary back" data-a="topic" data-id="'+t.id+'">← '+esc(t.name)+'</button><div class="lesson"><span class="badge">Lesson '+lessonNo+'/4</span><h2>'+esc(LESSONS[lessonNo-1])+'</h2><h3>Concept</h3><p>'+esc(t.name)+' is an important DSA area. Start by understanding the data model, the operations it supports and the constraints that determine the best solution.</p><h3>Why it matters</h3><p>Interview problems test whether you can choose the right structure, explain your reasoning and analyze time and space complexity.</p><h3>Core pattern</h3><p>Break the problem into input, operation, edge cases and output. Then choose the simplest efficient approach.</p><h3>Code example</h3><div class="code">'+esc(code)+'</div><h3>Line-by-line thinking</h3><p>1. Read the input.<br>2. Identify the required operation.<br>3. Choose the appropriate data structure or algorithm.<br>4. Handle edge cases.<br>5. State complexity and test the result.</p><h3>Complexity</h3><p>Always mention time and space complexity. Prefer an efficient solution when constraints are large.</p><h3>Interview tip</h3><p>Do not rush into code. Explain the approach first, then implement it clearly.</p><div class="actions"><button class="btn green" data-a="complete" data-id="'+t.id+'" data-n="'+lessonNo+'" '+(d?"disabled":"")+'>'+(d?"✓ Completed":"+10 Coins — Complete")+'</button><button class="btn secondary" data-a="next" data-id="'+t.id+'" data-n="'+lessonNo+'">Next →</button></div></div></div>'}
